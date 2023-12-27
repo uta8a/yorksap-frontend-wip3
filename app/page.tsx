@@ -12,32 +12,31 @@ type Room = {
   id: string;
   name: string;
 };
-type FormValues = {
+type UserInfoValues = {
   username: string;
   password: string;
 };
 
+type RoomIdValue = {
+  id: string;
+};
+
 export default function Home() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<FormValues>();
+  const userInfoForm = useForm<UserInfoValues>();
   const { data, error, isLoading } = useSWR("/api/v1/room", getData);
-  const onSubmit = (data: FormValues) => console.log(data);
+  const onUserInfoSubmit = (data: UserInfoValues) => console.log(data);
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   return (
     <main className="flex  flex-col justify-between p-24">
       <h1 className="font-bold text-3xl pb-5">わくわくyorksapランド</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={userInfoForm.handleSubmit(onUserInfoSubmit)}>
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Username
         </label>
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          {...register("username")}
+          {...userInfoForm.register("username")}
         />
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Password
@@ -45,13 +44,15 @@ export default function Home() {
         <input
           type="password"
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          {...register("password", { required: true })}
+          {...userInfoForm.register("password", { required: true })}
         />
-        {errors.password && <span>This field is required</span>}
-
+        {userInfoForm.formState.errors.password && (
+          <span>This field is required</span>
+        )}
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="submit"
+          defaultValue="ログイン"
         />
       </form>
       <div>
