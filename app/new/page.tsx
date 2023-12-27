@@ -18,21 +18,14 @@ type Room = {
 type UserInfoValues = {
   username: string;
   password: string;
-  roomid: string;
+  roomname: string;
 };
 
-export default function Home() {
+export default function New() {
   const userInfoForm = useForm<UserInfoValues>();
-  const { data, error, isLoading } = useSWR("/api/v1/room", getData);
-  const [login, setLogin] = useState(false);
-  useEffect(() => {
-    if (Cookies.get("roomid")) {
-      setLogin(true);
-    }
-  }, []);
   const onUserInfoSubmit = (data: UserInfoValues) => {
     console.log(data);
-    fetch(`/api/v1/room/${data.roomid}/register`, {
+    fetch(`/api/v1/room`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,17 +38,14 @@ export default function Home() {
       if (res.status === 200) {
         return res.json().then((jsonValue) => {
           Cookies.set("accessToken", jsonValue.accessToken);
-          Cookies.set("roomid", data.roomid);
-          window.location.href = `/room/${data.roomid}`;
+          Cookies.set("roomid", jsonValue.roomId);
+          window.location.href = `/room/${jsonValue.roomId}`;
         });
       } else {
         alert("アカウントの作成に失敗しました");
       }
     });
   };
-  if (error) return <main>failed to load</main>;
-  if (isLoading) return <main>loading...</main>;
-  if (login) window.location.href = `/room/${Cookies.get("roomid")}`;
   return (
     <main className="flex  flex-col justify-between p-24">
       <h1 className="font-bold text-3xl pb-5">わくわくyorksapランド</h1>
@@ -79,39 +69,25 @@ export default function Home() {
           <span>This field is required</span>
         )}
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          どのルームに登録しますか？
+          登録するルーム名
         </label>
-        <ul className="flex flex-col font-bold">
-          {data?.roomlist.map((room) => (
-            <li className="" key={room.id}>
-              <input
-                type="radio"
-                className="mr-2"
-                value={`${room.id}`}
-                {...userInfoForm.register("roomid")}
-              />
-              <Link
-                className="font-medium text-xl text-blue-500 hover:underline"
-                href={`/room/${room.id}`}
-              >
-                {room.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <input
+          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          {...userInfoForm.register("roomname", { required: true })}
+        />
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="submit"
-          value="アカウントを作成してログイン"
+          value="部屋を作る"
         />
       </form>
       {/* TODO: ログイン機能を実装する。ログイン時には roomid が必要 */}
       <div>
         <Link
           className="float-right font-medium text-sl text-blue-500 hover:underline"
-          href={`/new`}
+          href={`/`}
         >
-          ルームを作成
+          アカウント登録する
         </Link>
       </div>
     </main>

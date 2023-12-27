@@ -18,20 +18,8 @@ const data1 = `{
 }`;
 
 const data2 = `{
-    "roomlist": [
-        {
-            "id": "aa317643-a121-49e8-a7f9-6698a7a8be31",
-            "name": "room1"
-        },
-        {
-            "id": "efc85b80-8c54-4bf4-a5c0-9855a7952c45",
-            "name": "wakuwaku-yorkland"
-        },
-        {
-            "id": "8a3cba69-a048-409a-a4cb-0f79b3bd1a95",
-            "name": "welcome room"
-        }
-    ]
+    "roomId": "aa317643-a121-49e8-a7f9-6698a7a8be31",
+    "accessToken": "test-token"
 }`;
 
 export async function GET() {
@@ -39,6 +27,6 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  console.log(req.body);
+  const body = await req.json();
   return NextResponse.json(JSON.parse(data2));
 }
