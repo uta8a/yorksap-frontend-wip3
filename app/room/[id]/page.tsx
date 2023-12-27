@@ -7084,6 +7084,12 @@ export default function Page({ params }: { params: { id: string } }) {
                 </>
               );
             })}
+            <tr>
+              <td>Now</td>
+              {gameResponse.data?.nowPosition.map((value, index) => {
+                return <td key={index}>{value.position}</td>;
+              })}
+            </tr>
           </tbody>
         </table>
       </div>
