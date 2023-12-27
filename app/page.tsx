@@ -1,9 +1,73 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import useSWR, { Fetcher } from "swr";
+import { useForm } from "react-hook-form";
+const getData: Fetcher<RoomList, string> = (url) =>
+  fetch(url).then((res) => res.json());
+type RoomList = {
+  roomlist: Room[];
+};
+type Room = {
+  id: string;
+  name: string;
+};
+type FormValues = {
+  username: string;
+  password: string;
+};
 
 export default function Home() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
+  const { data, error, isLoading } = useSWR("/api/v1/room", getData);
+  const onSubmit = (data: FormValues) => console.log(data);
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>public page</h1>
+    <main className="flex  flex-col justify-between p-24">
+      <h1 className="font-bold text-3xl pb-5">わくわくyorksapランド</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Username
+        </label>
+        <input
+          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          {...register("username")}
+        />
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Password
+        </label>
+        <input
+          type="password"
+          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          {...register("password", { required: true })}
+        />
+        {errors.password && <span>This field is required</span>}
+
+        <input
+          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          type="submit"
+        />
+      </form>
+      <div>
+        <ul className="flex flex-col font-bold list-disc">
+          {data?.roomlist.map((room) => (
+            <li className="" key={room.id}>
+              <Link
+                className="font-medium text-xl text-blue-500 hover:underline"
+                href={`/room/${room.id}`}
+              >
+                {room.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }
