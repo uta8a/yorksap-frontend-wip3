@@ -3,8 +3,10 @@
 import Link from "next/link";
 import useSWR, { Fetcher } from "swr";
 import { useForm } from "react-hook-form";
+
 const getData: Fetcher<RoomList, string> = (url) =>
   fetch(url).then((res) => res.json());
+
 type RoomList = {
   roomlist: Room[];
 };
@@ -15,10 +17,7 @@ type Room = {
 type UserInfoValues = {
   username: string;
   password: string;
-};
-
-type RoomIdValue = {
-  id: string;
+  roomid: string;
 };
 
 export default function Home() {
@@ -49,16 +48,18 @@ export default function Home() {
         {userInfoForm.formState.errors.password && (
           <span>This field is required</span>
         )}
-        <input
-          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          type="submit"
-          defaultValue="ログイン"
-        />
-      </form>
-      <div>
-        <ul className="flex flex-col font-bold list-disc">
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          どのルームに登録しますか？
+        </label>
+        <ul className="flex flex-col font-bold">
           {data?.roomlist.map((room) => (
             <li className="" key={room.id}>
+              <input
+                type="radio"
+                className="mr-2"
+                value={`${room.id}`}
+                {...userInfoForm.register("roomid")}
+              />
               <Link
                 className="font-medium text-xl text-blue-500 hover:underline"
                 href={`/room/${room.id}`}
@@ -68,7 +69,12 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </div>
+        <input
+          className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          type="submit"
+          defaultValue="ログイン"
+        />
+      </form>
     </main>
   );
 }
