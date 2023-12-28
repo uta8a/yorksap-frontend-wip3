@@ -291,6 +291,32 @@ export default function Page({ params }: { params: { id: string } }) {
     );
   if (roomResponse.isLoading || gameResponse.isLoading)
     return <main>Now loading...</main>;
+
+  console.debug(
+    "debug",
+    JSON.stringify(
+      listNextWay(
+        getNowTurnPosition(
+          gameResponse.data?.turn || "",
+          gameResponse.data?.nowPosition || []
+        ),
+        dest,
+        gameResponse.data?.next || []
+      ).length !== 0 &&
+        Object.keys(moveForm.watch()).length !== 0 &&
+        moveForm.watch().move !== null
+    ),
+    listNextWay(
+      getNowTurnPosition(
+        gameResponse.data?.turn || "",
+        gameResponse.data?.nowPosition || []
+      ),
+      dest,
+      gameResponse.data?.next || []
+    ),
+    Object.keys(moveForm.watch()).length,
+    moveForm.watch().move
+  );
   return (
     <main>
       <h1 className="text-3xl text-center">
