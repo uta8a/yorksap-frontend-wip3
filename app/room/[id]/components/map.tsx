@@ -3,7 +3,6 @@ import React from "react";
 type Props = {
   onClickNode: (nodeId: number) => void;
   fillColor: string[];
-  strokeColor: string[];
   candidates: number[];
   highlightColor?: string;
 };
@@ -11,7 +10,6 @@ type Props = {
 export const Map = ({
   onClickNode,
   fillColor,
-  strokeColor,
   candidates,
   highlightColor,
 }: Props) => {
@@ -22,6 +20,10 @@ export const Map = ({
 
   highlightColor = highlightColor || "#ff5c61";
 
+  const simpleStroke = 'gray';
+  const comboStroke = 'url(#__map_node_combo)';
+  const busStroke = 'url(#__map_node_bus)';
+
   return (
     <svg
       width="1024"
@@ -30,6 +32,21 @@ export const Map = ({
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
     >
+          <defs>
+          <linearGradient id="__map_node_combo" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#db427f" />
+          <stop offset="50%" stopColor="#db427f" />
+          <stop offset="50%" stopColor="#3b9dff" />
+          <stop offset="100%" stopColor="#3b9dff" />
+          </linearGradient>
+
+          <linearGradient id="__map_node_bus" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#a1a1a1" />
+          <stop offset="50%" stopColor="#a1a1a1" />
+          <stop offset="50%" stopColor="#3b9dff" />
+          <stop offset="100%" stopColor="#3b9dff" />
+          </linearGradient>
+          </defs>
       <rect width="1024" height="1024" fill="#d3d3d3" />
   <path
       stroke="none"
@@ -2888,7 +2905,7 @@ export const Map = ({
         cy="61.076096"
         r="12"
         fill={fillColor[1]}
-        stroke={strokeColor[1]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -2918,7 +2935,7 @@ export const Map = ({
         cy="36.924683"
         r="12"
         fill={fillColor[2]}
-        stroke={strokeColor[2]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -2948,7 +2965,7 @@ export const Map = ({
         cy="34.459274"
         r="12"
         fill={fillColor[3]}
-        stroke={strokeColor[3]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -2978,7 +2995,7 @@ export const Map = ({
         cy="23.804806"
         r="12"
         fill={fillColor[4]}
-        stroke={strokeColor[4]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3008,7 +3025,7 @@ export const Map = ({
         cy="34.223984"
         r="12"
         fill={fillColor[5]}
-        stroke={strokeColor[5]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3038,7 +3055,7 @@ export const Map = ({
         cy="33.290138"
         r="12"
         fill={fillColor[6]}
-        stroke={strokeColor[6]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3068,7 +3085,7 @@ export const Map = ({
         cy="43.453575"
         r="12"
         fill={fillColor[7]}
-        stroke={strokeColor[7]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3098,7 +3115,7 @@ export const Map = ({
         cy="117.09702"
         r="12"
         fill={fillColor[8]}
-        stroke={strokeColor[8]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3128,7 +3145,7 @@ export const Map = ({
         cy="115.86467"
         r="12"
         fill={fillColor[9]}
-        stroke={strokeColor[9]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3158,7 +3175,7 @@ export const Map = ({
         cy="100.69551"
         r="12"
         fill={fillColor[10]}
-        stroke={strokeColor[10]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3188,7 +3205,7 @@ export const Map = ({
         cy="109.498"
         r="12"
         fill={fillColor[11]}
-        stroke={strokeColor[11]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3218,7 +3235,7 @@ export const Map = ({
         cy="96.624352"
         r="12"
         fill={fillColor[12]}
-        stroke={strokeColor[12]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3248,7 +3265,7 @@ export const Map = ({
         cy="90.440384"
         r="12"
         fill={fillColor[13]}
-        stroke={strokeColor[13]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3278,7 +3295,7 @@ export const Map = ({
         cy="67.927223"
         r="12"
         fill={fillColor[14]}
-        stroke={strokeColor[14]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3308,7 +3325,7 @@ export const Map = ({
         cy="58.313278"
         r="12"
         fill={fillColor[15]}
-        stroke={strokeColor[15]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3338,7 +3355,7 @@ export const Map = ({
         cy="98.218048"
         r="12"
         fill={fillColor[16]}
-        stroke={strokeColor[16]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3368,7 +3385,7 @@ export const Map = ({
         cy="130.9677"
         r="12"
         fill={fillColor[17]}
-        stroke={strokeColor[17]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3398,7 +3415,7 @@ export const Map = ({
         cy="159.61589"
         r="12"
         fill={fillColor[18]}
-        stroke={strokeColor[18]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3428,7 +3445,7 @@ export const Map = ({
         cy="167.50096"
         r="12"
         fill={fillColor[19]}
-        stroke={strokeColor[19]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3458,7 +3475,7 @@ export const Map = ({
         cy="136.85501"
         r="12"
         fill={fillColor[20]}
-        stroke={strokeColor[20]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3488,7 +3505,7 @@ export const Map = ({
         cy="180.67493"
         r="12"
         fill={fillColor[21]}
-        stroke={strokeColor[21]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3518,7 +3535,7 @@ export const Map = ({
         cy="190.67252"
         r="12"
         fill={fillColor[22]}
-        stroke={strokeColor[22]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3548,7 +3565,7 @@ export const Map = ({
         cy="141.53888"
         r="12"
         fill={fillColor[23]}
-        stroke={strokeColor[23]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3578,7 +3595,7 @@ export const Map = ({
         cy="147.62567"
         r="12"
         fill={fillColor[24]}
-        stroke={strokeColor[24]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3608,7 +3625,7 @@ export const Map = ({
         cy="163.15764"
         r="12"
         fill={fillColor[25]}
-        stroke={strokeColor[25]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3638,7 +3655,7 @@ export const Map = ({
         cy="94.843628"
         r="12"
         fill={fillColor[26]}
-        stroke={strokeColor[26]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3668,7 +3685,7 @@ export const Map = ({
         cy="147.89021"
         r="12"
         fill={fillColor[27]}
-        stroke={strokeColor[27]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3698,7 +3715,7 @@ export const Map = ({
         cy="129.02621"
         r="12"
         fill={fillColor[28]}
-        stroke={strokeColor[28]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3728,7 +3745,7 @@ export const Map = ({
         cy="157.69121"
         r="12"
         fill={fillColor[29]}
-        stroke={strokeColor[29]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3758,7 +3775,7 @@ export const Map = ({
         cy="152.17581"
         r="12"
         fill={fillColor[30]}
-        stroke={strokeColor[30]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3788,7 +3805,7 @@ export const Map = ({
         cy="199.17503"
         r="12"
         fill={fillColor[31]}
-        stroke={strokeColor[31]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3818,7 +3835,7 @@ export const Map = ({
         cy="225.69246"
         r="12"
         fill={fillColor[32]}
-        stroke={strokeColor[32]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3848,7 +3865,7 @@ export const Map = ({
         cy="206.88477"
         r="12"
         fill={fillColor[33]}
-        stroke={strokeColor[33]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3878,7 +3895,7 @@ export const Map = ({
         cy="219.23373"
         r="12"
         fill={fillColor[34]}
-        stroke={strokeColor[34]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3908,7 +3925,7 @@ export const Map = ({
         cy="239.55623"
         r="12"
         fill={fillColor[35]}
-        stroke={strokeColor[35]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3938,7 +3955,7 @@ export const Map = ({
         cy="244.57619"
         r="12"
         fill={fillColor[36]}
-        stroke={strokeColor[36]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3968,7 +3985,7 @@ export const Map = ({
         cy="191.85478"
         r="12"
         fill={fillColor[37]}
-        stroke={strokeColor[37]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -3998,7 +4015,7 @@ export const Map = ({
         cy="195.43672"
         r="12"
         fill={fillColor[38]}
-        stroke={strokeColor[38]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4028,7 +4045,7 @@ export const Map = ({
         cy="186.48553"
         r="12"
         fill={fillColor[39]}
-        stroke={strokeColor[39]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4058,7 +4075,7 @@ export const Map = ({
         cy="229.47316"
         r="12"
         fill={fillColor[40]}
-        stroke={strokeColor[40]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4088,7 +4105,7 @@ export const Map = ({
         cy="209.88429"
         r="12"
         fill={fillColor[41]}
-        stroke={strokeColor[41]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4118,7 +4135,7 @@ export const Map = ({
         cy="210.63693"
         r="12"
         fill={fillColor[42]}
-        stroke={strokeColor[42]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4148,7 +4165,7 @@ export const Map = ({
         cy="247.02478"
         r="12"
         fill={fillColor[43]}
-        stroke={strokeColor[43]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4178,7 +4195,7 @@ export const Map = ({
         cy="271.10458"
         r="12"
         fill={fillColor[44]}
-        stroke={strokeColor[44]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4208,7 +4225,7 @@ export const Map = ({
         cy="283.10504"
         r="12"
         fill={fillColor[45]}
-        stroke={strokeColor[45]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4238,7 +4255,7 @@ export const Map = ({
         cy="256.9953"
         r="12"
         fill={fillColor[46]}
-        stroke={strokeColor[46]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4268,7 +4285,7 @@ export const Map = ({
         cy="238.58875"
         r="12"
         fill={fillColor[47]}
-        stroke={strokeColor[47]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4298,7 +4315,7 @@ export const Map = ({
         cy="283.30963"
         r="12"
         fill={fillColor[48]}
-        stroke={strokeColor[48]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4328,7 +4345,7 @@ export const Map = ({
         cy="280.93188"
         r="12"
         fill={fillColor[49]}
-        stroke={strokeColor[49]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4358,7 +4375,7 @@ export const Map = ({
         cy="241.32014"
         r="12"
         fill={fillColor[50]}
-        stroke={strokeColor[50]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4388,7 +4405,7 @@ export const Map = ({
         cy="252.35388"
         r="12"
         fill={fillColor[51]}
-        stroke={strokeColor[51]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4418,7 +4435,7 @@ export const Map = ({
         cy="235.87636"
         r="12"
         fill={fillColor[52]}
-        stroke={strokeColor[52]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4448,7 +4465,7 @@ export const Map = ({
         cy="276.11069"
         r="12"
         fill={fillColor[53]}
-        stroke={strokeColor[53]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4478,7 +4495,7 @@ export const Map = ({
         cy="259.43298"
         r="12"
         fill={fillColor[54]}
-        stroke={strokeColor[54]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4508,7 +4525,7 @@ export const Map = ({
         cy="258.31061"
         r="12"
         fill={fillColor[55]}
-        stroke={strokeColor[55]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4538,7 +4555,7 @@ export const Map = ({
         cy="271.28653"
         r="12"
         fill={fillColor[56]}
-        stroke={strokeColor[56]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4568,7 +4585,7 @@ export const Map = ({
         cy="293.68863"
         r="12"
         fill={fillColor[57]}
-        stroke={strokeColor[57]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4598,7 +4615,7 @@ export const Map = ({
         cy="308.45334"
         r="12"
         fill={fillColor[58]}
-        stroke={strokeColor[58]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4628,7 +4645,7 @@ export const Map = ({
         cy="334.27368"
         r="12"
         fill={fillColor[59]}
-        stroke={strokeColor[59]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4658,7 +4675,7 @@ export const Map = ({
         cy="327.16241"
         r="12"
         fill={fillColor[60]}
-        stroke={strokeColor[60]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4688,7 +4705,7 @@ export const Map = ({
         cy="337.3938"
         r="12"
         fill={fillColor[61]}
-        stroke={strokeColor[61]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4718,7 +4735,7 @@ export const Map = ({
         cy="321.54617"
         r="12"
         fill={fillColor[62]}
-        stroke={strokeColor[62]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4748,7 +4765,7 @@ export const Map = ({
         cy="373.8869"
         r="12"
         fill={fillColor[63]}
-        stroke={strokeColor[63]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4778,7 +4795,7 @@ export const Map = ({
         cy="361.67966"
         r="12"
         fill={fillColor[64]}
-        stroke={strokeColor[64]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4808,7 +4825,7 @@ export const Map = ({
         cy="345.90948"
         r="12"
         fill={fillColor[65]}
-        stroke={strokeColor[65]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4838,7 +4855,7 @@ export const Map = ({
         cy="336.37375"
         r="12"
         fill={fillColor[66]}
-        stroke={strokeColor[66]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4868,7 +4885,7 @@ export const Map = ({
         cy="322.65686"
         r="12"
         fill={fillColor[67]}
-        stroke={strokeColor[67]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4898,7 +4915,7 @@ export const Map = ({
         cy="302.97595"
         r="12"
         fill={fillColor[68]}
-        stroke={strokeColor[68]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4928,7 +4945,7 @@ export const Map = ({
         cy="297.16681"
         r="12"
         fill={fillColor[69]}
-        stroke={strokeColor[69]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4958,7 +4975,7 @@ export const Map = ({
         cy="313.46014"
         r="12"
         fill={fillColor[70]}
-        stroke={strokeColor[70]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -4988,7 +5005,7 @@ export const Map = ({
         cy="313.48062"
         r="12"
         fill={fillColor[71]}
-        stroke={strokeColor[71]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5018,7 +5035,7 @@ export const Map = ({
         cy="321.97729"
         r="12"
         fill={fillColor[72]}
-        stroke={strokeColor[72]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5048,7 +5065,7 @@ export const Map = ({
         cy="344.7608"
         r="12"
         fill={fillColor[73]}
-        stroke={strokeColor[73]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5078,7 +5095,7 @@ export const Map = ({
         cy="391.94711"
         r="12"
         fill={fillColor[74]}
-        stroke={strokeColor[74]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5108,7 +5125,7 @@ export const Map = ({
         cy="375.99426"
         r="12"
         fill={fillColor[75]}
-        stroke={strokeColor[75]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5138,7 +5155,7 @@ export const Map = ({
         cy="373.16641"
         r="12"
         fill={fillColor[76]}
-        stroke={strokeColor[76]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5168,7 +5185,7 @@ export const Map = ({
         cy="416.23441"
         r="12"
         fill={fillColor[77]}
-        stroke={strokeColor[77]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5198,7 +5215,7 @@ export const Map = ({
         cy="402.12589"
         r="12"
         fill={fillColor[78]}
-        stroke={strokeColor[78]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5228,7 +5245,7 @@ export const Map = ({
         cy="394.52795"
         r="12"
         fill={fillColor[79]}
-        stroke={strokeColor[79]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5258,7 +5275,7 @@ export const Map = ({
         cy="414.64731"
         r="12"
         fill={fillColor[80]}
-        stroke={strokeColor[80]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5288,7 +5305,7 @@ export const Map = ({
         cy="428.3905"
         r="12"
         fill={fillColor[81]}
-        stroke={strokeColor[81]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5318,7 +5335,7 @@ export const Map = ({
         cy="403.37393"
         r="12"
         fill={fillColor[82]}
-        stroke={strokeColor[82]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5348,7 +5365,7 @@ export const Map = ({
         cy="386.85696"
         r="12"
         fill={fillColor[83]}
-        stroke={strokeColor[83]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5378,7 +5395,7 @@ export const Map = ({
         cy="360.44183"
         r="12"
         fill={fillColor[84]}
-        stroke={strokeColor[84]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5408,7 +5425,7 @@ export const Map = ({
         cy="342.46494"
         r="12"
         fill={fillColor[85]}
-        stroke={strokeColor[85]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5438,7 +5455,7 @@ export const Map = ({
         cy="376.95294"
         r="12"
         fill={fillColor[86]}
-        stroke={strokeColor[86]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5468,7 +5485,7 @@ export const Map = ({
         cy="398.96921"
         r="12"
         fill={fillColor[87]}
-        stroke={strokeColor[87]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5498,7 +5515,7 @@ export const Map = ({
         cy="407.1897"
         r="12"
         fill={fillColor[88]}
-        stroke={strokeColor[88]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5528,7 +5545,7 @@ export const Map = ({
         cy="375.03702"
         r="12"
         fill={fillColor[89]}
-        stroke={strokeColor[89]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5558,7 +5575,7 @@ export const Map = ({
         cy="376.68112"
         r="12"
         fill={fillColor[90]}
-        stroke={strokeColor[90]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5588,7 +5605,7 @@ export const Map = ({
         cy="379.27951"
         r="12"
         fill={fillColor[91]}
-        stroke={strokeColor[91]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5618,7 +5635,7 @@ export const Map = ({
         cy="441.69525"
         r="12"
         fill={fillColor[92]}
-        stroke={strokeColor[92]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5648,7 +5665,7 @@ export const Map = ({
         cy="476.39517"
         r="12"
         fill={fillColor[93]}
-        stroke={strokeColor[93]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5678,7 +5695,7 @@ export const Map = ({
         cy="458.66672"
         r="12"
         fill={fillColor[94]}
-        stroke={strokeColor[94]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5708,7 +5725,7 @@ export const Map = ({
         cy="449.94495"
         r="12"
         fill={fillColor[95]}
-        stroke={strokeColor[95]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5738,7 +5755,7 @@ export const Map = ({
         cy="473.44312"
         r="12"
         fill={fillColor[96]}
-        stroke={strokeColor[96]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5768,7 +5785,7 @@ export const Map = ({
         cy="464.45685"
         r="12"
         fill={fillColor[97]}
-        stroke={strokeColor[97]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5798,7 +5815,7 @@ export const Map = ({
         cy="440.56119"
         r="12"
         fill={fillColor[98]}
-        stroke={strokeColor[98]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5828,7 +5845,7 @@ export const Map = ({
         cy="446.04736"
         r="12"
         fill={fillColor[99]}
-        stroke={strokeColor[99]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5858,7 +5875,7 @@ export const Map = ({
         cy="476.01227"
         r="12"
         fill={fillColor[100]}
-        stroke={strokeColor[100]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5888,7 +5905,7 @@ export const Map = ({
         cy="441.68503"
         r="12"
         fill={fillColor[101]}
-        stroke={strokeColor[101]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5918,7 +5935,7 @@ export const Map = ({
         cy="395.871"
         r="12"
         fill={fillColor[102]}
-        stroke={strokeColor[102]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5948,7 +5965,7 @@ export const Map = ({
         cy="383.37003"
         r="12"
         fill={fillColor[103]}
-        stroke={strokeColor[103]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -5978,7 +5995,7 @@ export const Map = ({
         cy="418.34909"
         r="12"
         fill={fillColor[104]}
-        stroke={strokeColor[104]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6008,7 +6025,7 @@ export const Map = ({
         cy="435.17877"
         r="12"
         fill={fillColor[105]}
-        stroke={strokeColor[105]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6038,7 +6055,7 @@ export const Map = ({
         cy="446.78683"
         r="12"
         fill={fillColor[106]}
-        stroke={strokeColor[106]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6068,7 +6085,7 @@ export const Map = ({
         cy="446.44778"
         r="12"
         fill={fillColor[107]}
-        stroke={strokeColor[107]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6098,7 +6115,7 @@ export const Map = ({
         cy="524.39978"
         r="12"
         fill={fillColor[108]}
-        stroke={strokeColor[108]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6128,7 +6145,7 @@ export const Map = ({
         cy="542.69537"
         r="12"
         fill={fillColor[109]}
-        stroke={strokeColor[109]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6158,7 +6175,7 @@ export const Map = ({
         cy="482.39136"
         r="12"
         fill={fillColor[110]}
-        stroke={strokeColor[110]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6188,7 +6205,7 @@ export const Map = ({
         cy="524.77686"
         r="12"
         fill={fillColor[111]}
-        stroke={strokeColor[111]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6218,7 +6235,7 @@ export const Map = ({
         cy="508.62238"
         r="12"
         fill={fillColor[112]}
-        stroke={strokeColor[112]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6248,7 +6265,7 @@ export const Map = ({
         cy="512.60327"
         r="12"
         fill={fillColor[113]}
-        stroke={strokeColor[113]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6278,7 +6295,7 @@ export const Map = ({
         cy="489.30679"
         r="12"
         fill={fillColor[114]}
-        stroke={strokeColor[114]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6308,7 +6325,7 @@ export const Map = ({
         cy="457.48734"
         r="12"
         fill={fillColor[115]}
-        stroke={strokeColor[115]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6338,7 +6355,7 @@ export const Map = ({
         cy="511.41077"
         r="12"
         fill={fillColor[116]}
-        stroke={strokeColor[116]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6368,7 +6385,7 @@ export const Map = ({
         cy="551.87891"
         r="12"
         fill={fillColor[117]}
-        stroke={strokeColor[117]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6398,7 +6415,7 @@ export const Map = ({
         cy="575.46326"
         r="12"
         fill={fillColor[118]}
-        stroke={strokeColor[118]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6428,7 +6445,7 @@ export const Map = ({
         cy="592.52826"
         r="12"
         fill={fillColor[119]}
-        stroke={strokeColor[119]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6458,7 +6475,7 @@ export const Map = ({
         cy="638.71637"
         r="12"
         fill={fillColor[120]}
-        stroke={strokeColor[120]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6488,7 +6505,7 @@ export const Map = ({
         cy="641.7854"
         r="12"
         fill={fillColor[121]}
-        stroke={strokeColor[121]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6518,7 +6535,7 @@ export const Map = ({
         cy="638.91956"
         r="12"
         fill={fillColor[122]}
-        stroke={strokeColor[122]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6548,7 +6565,7 @@ export const Map = ({
         cy="631.60223"
         r="12"
         fill={fillColor[123]}
-        stroke={strokeColor[123]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6578,7 +6595,7 @@ export const Map = ({
         cy="609.36237"
         r="12"
         fill={fillColor[124]}
-        stroke={strokeColor[124]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6608,7 +6625,7 @@ export const Map = ({
         cy="551.26221"
         r="12"
         fill={fillColor[125]}
-        stroke={strokeColor[125]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6638,7 +6655,7 @@ export const Map = ({
         cy="522.68268"
         r="12"
         fill={fillColor[126]}
-        stroke={strokeColor[126]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6668,7 +6685,7 @@ export const Map = ({
         cy="550.26697"
         r="12"
         fill={fillColor[127]}
-        stroke={strokeColor[127]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6698,7 +6715,7 @@ export const Map = ({
         cy="735.85101"
         r="12"
         fill={fillColor[128]}
-        stroke={strokeColor[128]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6728,7 +6745,7 @@ export const Map = ({
         cy="585.98547"
         r="12"
         fill={fillColor[129]}
-        stroke={strokeColor[129]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6758,7 +6775,7 @@ export const Map = ({
         cy="616.98218"
         r="12"
         fill={fillColor[130]}
-        stroke={strokeColor[130]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6788,7 +6805,7 @@ export const Map = ({
         cy="580.00537"
         r="12"
         fill={fillColor[131]}
-        stroke={strokeColor[131]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6818,7 +6835,7 @@ export const Map = ({
         cy="577.53119"
         r="12"
         fill={fillColor[132]}
-        stroke={strokeColor[132]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6848,7 +6865,7 @@ export const Map = ({
         cy="633.24048"
         r="12"
         fill={fillColor[133]}
-        stroke={strokeColor[133]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6878,7 +6895,7 @@ export const Map = ({
         cy="604.98688"
         r="12"
         fill={fillColor[134]}
-        stroke={strokeColor[134]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6908,7 +6925,7 @@ export const Map = ({
         cy="623.88446"
         r="12"
         fill={fillColor[135]}
-        stroke={strokeColor[135]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6938,7 +6955,7 @@ export const Map = ({
         cy="685.43793"
         r="12"
         fill={fillColor[136]}
-        stroke={strokeColor[136]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6968,7 +6985,7 @@ export const Map = ({
         cy="687.92969"
         r="12"
         fill={fillColor[137]}
-        stroke={strokeColor[137]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -6998,7 +7015,7 @@ export const Map = ({
         cy="650.0979"
         r="12"
         fill={fillColor[138]}
-        stroke={strokeColor[138]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7028,7 +7045,7 @@ export const Map = ({
         cy="656.82776"
         r="12"
         fill={fillColor[139]}
-        stroke={strokeColor[139]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7058,7 +7075,7 @@ export const Map = ({
         cy="642.82593"
         r="12"
         fill={fillColor[140]}
-        stroke={strokeColor[140]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7088,7 +7105,7 @@ export const Map = ({
         cy="656.14966"
         r="12"
         fill={fillColor[141]}
-        stroke={strokeColor[141]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7118,7 +7135,7 @@ export const Map = ({
         cy="675.49884"
         r="12"
         fill={fillColor[142]}
-        stroke={strokeColor[142]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7148,7 +7165,7 @@ export const Map = ({
         cy="661.05566"
         r="12"
         fill={fillColor[143]}
-        stroke={strokeColor[143]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7178,7 +7195,7 @@ export const Map = ({
         cy="758.44165"
         r="12"
         fill={fillColor[144]}
-        stroke={strokeColor[144]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7208,7 +7225,7 @@ export const Map = ({
         cy="754.14948"
         r="12"
         fill={fillColor[145]}
-        stroke={strokeColor[145]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7238,7 +7255,7 @@ export const Map = ({
         cy="748.44995"
         r="12"
         fill={fillColor[146]}
-        stroke={strokeColor[146]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7268,7 +7285,7 @@ export const Map = ({
         cy="736.7323"
         r="12"
         fill={fillColor[147]}
-        stroke={strokeColor[147]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7298,7 +7315,7 @@ export const Map = ({
         cy="725.10229"
         r="12"
         fill={fillColor[148]}
-        stroke={strokeColor[148]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7328,7 +7345,7 @@ export const Map = ({
         cy="717.22382"
         r="12"
         fill={fillColor[149]}
-        stroke={strokeColor[149]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7358,7 +7375,7 @@ export const Map = ({
         cy="691.8302"
         r="12"
         fill={fillColor[150]}
-        stroke={strokeColor[150]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7388,7 +7405,7 @@ export const Map = ({
         cy="725.93677"
         r="12"
         fill={fillColor[151]}
-        stroke={strokeColor[151]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7418,7 +7435,7 @@ export const Map = ({
         cy="692.97302"
         r="12"
         fill={fillColor[152]}
-        stroke={strokeColor[152]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7448,7 +7465,7 @@ export const Map = ({
         cy="731.70355"
         r="12"
         fill={fillColor[153]}
-        stroke={strokeColor[153]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7478,7 +7495,7 @@ export const Map = ({
         cy="705.06042"
         r="12"
         fill={fillColor[154]}
-        stroke={strokeColor[154]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7508,7 +7525,7 @@ export const Map = ({
         cy="755.71906"
         r="12"
         fill={fillColor[155]}
-        stroke={strokeColor[155]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7538,7 +7555,7 @@ export const Map = ({
         cy="756.79169"
         r="12"
         fill={fillColor[156]}
-        stroke={strokeColor[156]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7568,7 +7585,7 @@ export const Map = ({
         cy="760.83838"
         r="12"
         fill={fillColor[157]}
-        stroke={strokeColor[157]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7598,7 +7615,7 @@ export const Map = ({
         cy="716.91833"
         r="12"
         fill={fillColor[158]}
-        stroke={strokeColor[158]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7628,7 +7645,7 @@ export const Map = ({
         cy="869.10461"
         r="12"
         fill={fillColor[159]}
-        stroke={strokeColor[159]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7658,7 +7675,7 @@ export const Map = ({
         cy="755.49396"
         r="12"
         fill={fillColor[160]}
-        stroke={strokeColor[160]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7688,7 +7705,7 @@ export const Map = ({
         cy="744.84167"
         r="12"
         fill={fillColor[161]}
-        stroke={strokeColor[161]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7718,7 +7735,7 @@ export const Map = ({
         cy="746.57202"
         r="12"
         fill={fillColor[162]}
-        stroke={strokeColor[162]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7748,7 +7765,7 @@ export const Map = ({
         cy="785.94263"
         r="12"
         fill={fillColor[163]}
-        stroke={strokeColor[163]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7778,7 +7795,7 @@ export const Map = ({
         cy="783.63507"
         r="12"
         fill={fillColor[164]}
-        stroke={strokeColor[164]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7808,7 +7825,7 @@ export const Map = ({
         cy="806.45947"
         r="12"
         fill={fillColor[165]}
-        stroke={strokeColor[165]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7838,7 +7855,7 @@ export const Map = ({
         cy="775.31812"
         r="12"
         fill={fillColor[166]}
-        stroke={strokeColor[166]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7868,7 +7885,7 @@ export const Map = ({
         cy="796.46484"
         r="12"
         fill={fillColor[167]}
-        stroke={strokeColor[167]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7898,7 +7915,7 @@ export const Map = ({
         cy="824.14117"
         r="12"
         fill={fillColor[168]}
-        stroke={strokeColor[168]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7928,7 +7945,7 @@ export const Map = ({
         cy="810.38483"
         r="12"
         fill={fillColor[169]}
-        stroke={strokeColor[169]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7958,7 +7975,7 @@ export const Map = ({
         cy="819.11096"
         r="12"
         fill={fillColor[170]}
-        stroke={strokeColor[170]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -7988,7 +8005,7 @@ export const Map = ({
         cy="969.67072"
         r="12"
         fill={fillColor[171]}
-        stroke={strokeColor[171]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8018,7 +8035,7 @@ export const Map = ({
         cy="810.76776"
         r="12"
         fill={fillColor[172]}
-        stroke={strokeColor[172]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8048,7 +8065,7 @@ export const Map = ({
         cy="855.27234"
         r="12"
         fill={fillColor[173]}
-        stroke={strokeColor[173]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8078,7 +8095,7 @@ export const Map = ({
         cy="818.52643"
         r="12"
         fill={fillColor[174]}
-        stroke={strokeColor[174]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8108,7 +8125,7 @@ export const Map = ({
         cy="869.93182"
         r="12"
         fill={fillColor[175]}
-        stroke={strokeColor[175]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8138,7 +8155,7 @@ export const Map = ({
         cy="855.58215"
         r="12"
         fill={fillColor[176]}
-        stroke={strokeColor[176]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8168,7 +8185,7 @@ export const Map = ({
         cy="842.96716"
         r="12"
         fill={fillColor[177]}
-        stroke={strokeColor[177]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8198,7 +8215,7 @@ export const Map = ({
         cy="834.16797"
         r="12"
         fill={fillColor[178]}
-        stroke={strokeColor[178]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8228,7 +8245,7 @@ export const Map = ({
         cy="845.04382"
         r="12"
         fill={fillColor[179]}
-        stroke={strokeColor[179]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8258,7 +8275,7 @@ export const Map = ({
         cy="861.73907"
         r="12"
         fill={fillColor[180]}
-        stroke={strokeColor[180]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8288,7 +8305,7 @@ export const Map = ({
         cy="838.90002"
         r="12"
         fill={fillColor[181]}
-        stroke={strokeColor[181]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8318,7 +8335,7 @@ export const Map = ({
         cy="851.3075"
         r="12"
         fill={fillColor[182]}
-        stroke={strokeColor[182]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8348,7 +8365,7 @@ export const Map = ({
         cy="818.3642"
         r="12"
         fill={fillColor[183]}
-        stroke={strokeColor[183]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8378,7 +8395,7 @@ export const Map = ({
         cy="872.38556"
         r="12"
         fill={fillColor[184]}
-        stroke={strokeColor[184]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8408,7 +8425,7 @@ export const Map = ({
         cy="929.28149"
         r="12"
         fill={fillColor[185]}
-        stroke={strokeColor[185]}
+        stroke={comboStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8438,7 +8455,7 @@ export const Map = ({
         cy="909.62103"
         r="12"
         fill={fillColor[186]}
-        stroke={strokeColor[186]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8468,7 +8485,7 @@ export const Map = ({
         cy="875.14471"
         r="12"
         fill={fillColor[187]}
-        stroke={strokeColor[187]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8498,7 +8515,7 @@ export const Map = ({
         cy="879.44421"
         r="12"
         fill={fillColor[188]}
-        stroke={strokeColor[188]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8528,7 +8545,7 @@ export const Map = ({
         cy="939.54938"
         r="12"
         fill={fillColor[189]}
-        stroke={strokeColor[189]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8558,7 +8575,7 @@ export const Map = ({
         cy="977.46008"
         r="12"
         fill={fillColor[190]}
-        stroke={strokeColor[190]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8588,7 +8605,7 @@ export const Map = ({
         cy="909.13287"
         r="12"
         fill={fillColor[191]}
-        stroke={strokeColor[191]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8618,7 +8635,7 @@ export const Map = ({
         cy="998.83618"
         r="12"
         fill={fillColor[192]}
-        stroke={strokeColor[192]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8648,7 +8665,7 @@ export const Map = ({
         cy="913.7627"
         r="12"
         fill={fillColor[193]}
-        stroke={strokeColor[193]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8678,7 +8695,7 @@ export const Map = ({
         cy="943.86353"
         r="12"
         fill={fillColor[194]}
-        stroke={strokeColor[194]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8708,7 +8725,7 @@ export const Map = ({
         cy="939.42517"
         r="12"
         fill={fillColor[195]}
-        stroke={strokeColor[195]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8738,7 +8755,7 @@ export const Map = ({
         cy="891.90863"
         r="12"
         fill={fillColor[196]}
-        stroke={strokeColor[196]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8768,7 +8785,7 @@ export const Map = ({
         cy="952.07227"
         r="12"
         fill={fillColor[197]}
-        stroke={strokeColor[197]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8798,7 +8815,7 @@ export const Map = ({
         cy="1001.3235"
         r="12"
         fill={fillColor[198]}
-        stroke={strokeColor[198]}
+        stroke={simpleStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
@@ -8828,7 +8845,7 @@ export const Map = ({
         cy="991.42535"
         r="12"
         fill={fillColor[199]}
-        stroke={strokeColor[199]}
+        stroke={busStroke} strokeWidth="3"
         onClick={(event) => {
           const target = event.target as HTMLInputElement;
           onClickNode(parseInt(target.id.substring(8)));
