@@ -58,12 +58,12 @@ const colorScheme = [
 ];
 
 const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${Cookies.get("accessToken")}`,
-    },
-  });
+  const headers = {
+    "Content-Type": "application/json",
+  }
+  if (Cookies.get("accessToken") !== undefined)
+    headers["Authorization"] = `Bearer ${Cookies.get("accessToken")}`;
+  const res = await fetch(url, { headers });
   console.log(res.ok);
   if (!res.ok) {
     const error = new Error("error");
@@ -72,12 +72,12 @@ const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
   return res.json();
 };
 const getGameData: Fetcher<GameResponse, string> = async (url) => {
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${Cookies.get("accessToken")}`,
-    },
-  });
+  const headers = {
+    "Content-Type": "application/json",
+  }
+  if (Cookies.get("accessToken") !== undefined)
+    headers["Authorization"] = `Bearer ${Cookies.get("accessToken")}`;
+  const res = await fetch(url, { headers });
   console.log(res.ok);
   if (!res.ok) {
     const error = new Error("error");
