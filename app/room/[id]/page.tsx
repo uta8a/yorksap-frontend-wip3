@@ -1,5 +1,6 @@
 "use client";
 import Cookies from "js-cookie";
+import React from "react";
 import useSWR, { Fetcher } from "swr";
 
 type RoomResponse = {
@@ -7056,25 +7057,25 @@ export default function Page({ params }: { params: { id: string } }) {
             <tr>
               <th></th>
               {gameResponse.data?.nowPosition.map((value, index) => {
-                return <th key={index}>{value.name}</th>;
+                return <th key={`thead-${index}`}>{value.name}</th>;
               })}
             </tr>
           </thead>
           <tbody>
             {gameResponse.data?.history.map((value, index) => {
               return (
-                <>
-                  <tr key={index}>
-                    <td>{value.phase}</td>
+                <React.Fragment key={`frag-${index}`}>
+                  <tr key={`tbody-tr-1-${index}`}>
+                    <td key={`tbody-td-1-${index}`}>{value.phase}</td>
                     {value.player.map((value, index) => {
-                      return <td key={index}>{value.position}</td>;
+                      return <td key={`tbody-1-${index}`}>{value.position}</td>;
                     })}
                   </tr>
-                  <tr>
-                    <td></td>
+                  <tr key={`tbody-tr-2-${index}`}>
+                    <td key={`tbody-td-2-${index}`}></td>
                     {value.player.map((value, index) => {
                       return (
-                        <td key={index}>
+                        <td key={`tbody-2-${index}`}>
                           {value.selectedTicket === "UNDERGROUND"
                             ? "UG"
                             : value.selectedTicket}
@@ -7082,7 +7083,7 @@ export default function Page({ params }: { params: { id: string } }) {
                       );
                     })}
                   </tr>
-                </>
+                </React.Fragment>
               );
             })}
             <tr>
