@@ -36,3 +36,6 @@ tbody tr:last-of-type {
 tbody td:first-child {
   border-right: #dcdcdc 1px solid;
 }
+circle[id^="mapnode"] {
+  stroke: red;
+}

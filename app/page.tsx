@@ -50,6 +50,7 @@ export default function Home() {
         });
       } else {
         alert("アカウントの作成に失敗しました");
+        console.log(res);
       }
     });
   };

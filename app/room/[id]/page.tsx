@@ -29,6 +29,7 @@ const getRoomData: Fetcher<RoomResponse, string> = (url) =>
 
 const getGameData: Fetcher<GameResponse, string> = (url) =>
   fetch(url).then((res) => res.json());
+
 export default function Page({ params }: { params: { id: string } }) {
   const onClickNode = (nodeId: number) => {
     console.log(nodeId);
