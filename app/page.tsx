@@ -56,7 +56,7 @@ export default function Home() {
   };
   if (error) return <main>failed to load</main>;
   if (isLoading) return <main>loading...</main>;
-  if (login) window.location.href = `/room/${Cookies.get("roomid")}`;
+  // if (login) window.location.href = `/room/${Cookies.get("roomid")}`;
   return (
     <main className="flex  flex-col justify-between p-24">
       <h1 className="font-bold text-3xl pb-5">わくわくyorksapランド</h1>

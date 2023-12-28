@@ -33,6 +33,7 @@ export default function New() {
       body: JSON.stringify({
         userName: data.username,
         userPassword: data.password,
+        roomName: data.roomname,
       }),
     }).then((res) => {
       if (res.status === 200) {
@@ -43,6 +44,7 @@ export default function New() {
         });
       } else {
         alert("アカウントの作成に失敗しました");
+        console.log(res);
       }
     });
   };

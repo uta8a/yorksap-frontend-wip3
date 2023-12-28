@@ -1,5 +1,7 @@
 "use client";
+import { error } from "console";
 import Cookies from "js-cookie";
+import Link from "next/link";
 import React from "react";
 import useSWR, { Fetcher } from "swr";
 
@@ -11,7 +13,7 @@ type GameResponse = {
   phase: number;
   turn: number;
   nowPosition: Player[];
-  history: Phase[];
+  history?: Phase[];
 };
 
 type Player = {
@@ -25,11 +27,34 @@ type Phase = {
   player: Player[];
 };
 
-const getRoomData: Fetcher<RoomResponse, string> = (url) =>
-  fetch(url).then((res) => res.json());
-
-const getGameData: Fetcher<GameResponse, string> = (url) =>
-  fetch(url).then((res) => res.json());
+const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
+  const res = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Cookies.get("accessToken")}`,
+    },
+  });
+  console.log(res.ok);
+  if (!res.ok) {
+    const error = new Error("error");
+    throw error;
+  }
+  return res.json();
+};
+const getGameData: Fetcher<GameResponse, string> = async (url) => {
+  const res = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Cookies.get("accessToken")}`,
+    },
+  });
+  console.log(res.ok);
+  if (!res.ok) {
+    const error = new Error("error");
+    throw error;
+  }
+  return res.json();
+};
 
 export default function Page({ params }: { params: { id: string } }) {
   const onClickNode = (nodeId: number) => {
@@ -38,8 +63,21 @@ export default function Page({ params }: { params: { id: string } }) {
   const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData);
   const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData);
 
-  if (roomResponse.error || roomResponse.error)
-    return <main>failed to load</main>;
+  console.log("data", roomResponse, gameResponse);
+  if (roomResponse.error || gameResponse.error)
+    return (
+      <main>
+        failed to load...{" "}
+        <div>
+          <Link
+            className="font-medium text-sl text-blue-500 hover:underline"
+            href={`/`}
+          >
+            ホームに戻る
+          </Link>
+        </div>
+      </main>
+    );
   if (roomResponse.isLoading || gameResponse.isLoading)
     return <main>Now loading...</main>;
   return (
@@ -7062,7 +7100,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </tr>
           </thead>
           <tbody>
-            {gameResponse.data?.history.map((value, index) => {
+            {gameResponse.data?.history?.map((value, index) => {
               return (
                 <React.Fragment key={`frag-${index}`}>
                   <tr key={`tbody-tr-1-${index}`}>
