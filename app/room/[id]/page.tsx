@@ -7,14 +7,8 @@ import useSWR, { Fetcher } from "swr";
 import { Map } from "./components/map";
 import { useForm } from "react-hook-form";
 
-type MovePost = SingleMove | DoubleMove;
-
-type SingleMove = {
-  single: string;
-};
-
-type DoubleMove = {
-  double: string;
+type MovePost = {
+  move: string;
 };
 
 type RoomResponse = {
@@ -150,9 +144,10 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const onMoveSubmit = (data: MovePost) => {
     console.log("onMoveSubmit", data);
-    const key = Object.keys(data)[0];
-    if ("single" in data) {
-      const single = JSON.parse(data.single);
+    const move = JSON.parse(data.move);
+    console.log("move", move);
+    if (move[0] === "SINGLE") {
+      console.log("single", move);
       fetch(`/api/v1/game/${params.id}/move`, {
         method: "POST",
         headers: {
@@ -161,13 +156,13 @@ export default function Page({ params }: { params: { id: string } }) {
         },
         // JSON: [Ticket(String), Dest(Number)]
         body: JSON.stringify({
-          ticket: single[0],
-          destination: single[1],
+          ticket: move[1],
+          destination: move[2],
         }),
       }).then((res) => {
         if (res.status === 200) {
-          return res.json().then((jsonValue) => {
-            // console.log(jsonValue);
+          return res.json().then((_) => {
+            console.log("ok");
             // window.location.reload();
           });
         } else {
@@ -176,8 +171,8 @@ export default function Page({ params }: { params: { id: string } }) {
         }
       });
     }
-    if ("double" in data) {
-      const double = JSON.parse(data.double);
+    if (move[0] === "DOUBLE") {
+      console.log("double", move);
       fetch(`/api/v1/game/${params.id}/double-move`, {
         method: "POST",
         headers: {
@@ -186,15 +181,15 @@ export default function Page({ params }: { params: { id: string } }) {
         },
         // JSON: [[Ticket(String), Dest(Number)], [Ticket(String), Dest(Number)]]
         body: JSON.stringify({
-          ticket1: double[0][0],
-          destination1: double[0][1],
-          ticket2: double[1][0],
-          destination2: double[1][1],
+          ticket1: move[1][0],
+          destination1: move[1][1],
+          ticket2: move[2][0],
+          destination2: move[2][1],
         }),
       }).then((res) => {
         if (res.status === 200) {
-          return res.json().then((jsonValue) => {
-            // console.log(jsonValue);
+          return res.json().then((_) => {
+            console.log("ok");
             // window.location.reload();
           });
         } else {
@@ -203,6 +198,8 @@ export default function Page({ params }: { params: { id: string } }) {
         }
       });
     }
+
+    return;
   };
   const onClickNode = (nodeId: number) => {
     setDest(nodeId);
@@ -319,10 +316,11 @@ export default function Page({ params }: { params: { id: string } }) {
                   type="radio"
                   className="mr-2"
                   value={JSON.stringify([
+                    "DOUBLE",
                     [value[1][2], value[1][1]],
                     [value[2][2], value[2][1]],
                   ])}
-                  {...moveForm.register("double")}
+                  {...moveForm.register("move")}
                 />
                 <span>{`${value[0]}: ${value[1][0]} -> (${value[1][2]}) ->${value[1][1]} -> (${value[2][2]}) -> ${value[2][1]}`}</span>
               </div>
@@ -334,8 +332,8 @@ export default function Page({ params }: { params: { id: string } }) {
               <input
                 type="radio"
                 className="mr-2"
-                value={JSON.stringify([value[2], value[1]])}
-                {...moveForm.register("single")}
+                value={JSON.stringify(["SINGLE", value[2], value[1]])}
+                {...moveForm.register("move")}
               />
               <span>{`${value[0]} -> (${value[2]}) -> ${value[1]}`}</span>
             </div>
