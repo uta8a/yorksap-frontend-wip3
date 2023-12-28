@@ -313,9 +313,19 @@ export default function Page({ params }: { params: { id: string } }) {
         onSubmit={moveForm.handleSubmit(onMoveSubmit)}
         className="px-10 text-left flex flex-col"
       >
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Move
-        </label>
+        {listNextWay(
+          getNowTurnPosition(
+            gameResponse.data?.turn || "",
+            gameResponse.data?.nowPosition || []
+          ),
+          dest,
+          gameResponse.data?.next || []
+        ).length !== 0 && (
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Move
+          </label>
+        )}
+
         {listNextWay(
           getNowTurnPosition(
             gameResponse.data?.turn || "",
@@ -329,6 +339,7 @@ export default function Page({ params }: { params: { id: string } }) {
             return (
               <div key={`input-${index}`}>
                 <input
+                  checked={index === 0}
                   type="radio"
                   className="mr-2"
                   value={JSON.stringify([
@@ -346,6 +357,7 @@ export default function Page({ params }: { params: { id: string } }) {
           return (
             <div key={`input-${index}`}>
               <input
+                checked={index === 0}
                 type="radio"
                 className="mr-2"
                 value={JSON.stringify(["SINGLE", value[2], value[1]])}
