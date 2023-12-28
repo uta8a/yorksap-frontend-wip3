@@ -2,7 +2,7 @@
 import { error } from "console";
 import Cookies from "js-cookie";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useSWR, { Fetcher } from "swr";
 
 type RoomResponse = {
@@ -57,7 +57,33 @@ const getGameData: Fetcher<GameResponse, string> = async (url) => {
 };
 
 export default function Page({ params }: { params: { id: string } }) {
+  const [strokeColor, setStrokeColor] = useState<any>([]);
+  const [fillColor, setFillColor] = useState<any>([]);
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < 200; i++) {
+      arr.push("black");
+    }
+    const arr2 = [];
+    for (let i = 0; i < 200; i++) {
+      arr2.push("white");
+    }
+    setStrokeColor(arr);
+    setFillColor(arr2);
+  }, []);
   const onClickNode = (nodeId: number) => {
+    const arr = [];
+    for (let i = 0; i < 200; i++) {
+      arr.push("black");
+    }
+    arr[nodeId] = "red";
+    setStrokeColor(arr);
+    const arr2 = [];
+    for (let i = 0; i < 200; i++) {
+      arr2.push("white");
+    }
+    arr2[nodeId] = "red";
+    setFillColor(arr2);
     console.log(nodeId);
   };
   const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData);
@@ -2913,8 +2939,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="146.95363"
             cy="61.076096"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[1]}
+            stroke={strokeColor[1]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -2934,8 +2960,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="321.50552"
             cy="36.924683"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[2]}
+            stroke={strokeColor[2]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -2955,8 +2981,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="434.79761"
             cy="34.459274"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[3]}
+            stroke={strokeColor[3]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -2976,8 +3002,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="504.95227"
             cy="23.804806"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[4]}
+            stroke={strokeColor[4]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -2997,8 +3023,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="782.21185"
             cy="34.223984"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[5]}
+            stroke={strokeColor[5]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3018,8 +3044,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="869.35254"
             cy="33.290138"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[6]}
+            stroke={strokeColor[6]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3039,8 +3065,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="952.27789"
             cy="43.453575"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[7]}
+            stroke={strokeColor[7]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3060,8 +3086,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="108.56148"
             cy="117.09702"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[8]}
+            stroke={strokeColor[8]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3081,8 +3107,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="178.98067"
             cy="115.86467"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[9]}
+            stroke={strokeColor[9]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3102,8 +3128,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="378.99841"
             cy="100.69551"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[10]}
+            stroke={strokeColor[10]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3123,8 +3149,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="431.57043"
             cy="109.498"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[11]}
+            stroke={strokeColor[11]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3144,8 +3170,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="475.96646"
             cy="96.624352"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[12]}
+            stroke={strokeColor[12]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3165,8 +3191,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="556.24951"
             cy="90.440384"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[13]}
+            stroke={strokeColor[13]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3186,8 +3212,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="639.16016"
             cy="67.927223"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[14]}
+            stroke={strokeColor[14]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3207,8 +3233,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="721.87207"
             cy="58.313278"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[15]}
+            stroke={strokeColor[15]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3228,8 +3254,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="802.14563"
             cy="98.218048"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[16]}
+            stroke={strokeColor[16]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3249,8 +3275,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="946.83337"
             cy="130.9677"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[17]}
+            stroke={strokeColor[17]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3270,8 +3296,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="71.859413"
             cy="159.61589"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[18]}
+            stroke={strokeColor[18]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3291,8 +3317,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="135.42819"
             cy="167.50096"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[19]}
+            stroke={strokeColor[19]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3312,8 +3338,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="216.5172"
             cy="136.85501"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[20]}
+            stroke={strokeColor[20]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3333,8 +3359,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="299.96857"
             cy="180.67493"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[21]}
+            stroke={strokeColor[21]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3354,8 +3380,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="434.69092"
             cy="190.67252"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[22]}
+            stroke={strokeColor[22]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3375,8 +3401,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="499.80444"
             cy="141.53888"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[23]}
+            stroke={strokeColor[23]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3396,8 +3422,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="603.79456"
             cy="147.62567"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[24]}
+            stroke={strokeColor[24]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3417,8 +3443,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="649.79126"
             cy="163.15764"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[25]}
+            stroke={strokeColor[25]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3438,8 +3464,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="716.15356"
             cy="94.843628"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[26]}
+            stroke={strokeColor[26]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3459,8 +3485,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="726.44342"
             cy="147.89021"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[27]}
+            stroke={strokeColor[27]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3480,8 +3506,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="757.1076"
             cy="129.02621"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[28]}
+            stroke={strokeColor[28]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3501,8 +3527,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="869.66241"
             cy="157.69121"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[29]}
+            stroke={strokeColor[29]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3522,8 +3548,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="975.65985"
             cy="152.17581"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[30]}
+            stroke={strokeColor[30]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3543,8 +3569,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="97.253754"
             cy="199.17503"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[31]}
+            stroke={strokeColor[31]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3564,8 +3590,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="192.19846"
             cy="225.69246"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[32]}
+            stroke={strokeColor[32]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3585,8 +3611,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="262.73459"
             cy="206.88477"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[33]}
+            stroke={strokeColor[33]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3606,8 +3632,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="383.03928"
             cy="219.23373"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[34]}
+            stroke={strokeColor[34]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3627,8 +3653,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="455.81717"
             cy="239.55623"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[35]}
+            stroke={strokeColor[35]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3648,8 +3674,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="486.21323"
             cy="244.57619"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[36]}
+            stroke={strokeColor[36]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3669,8 +3695,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="528.96265"
             cy="191.85478"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[37]}
+            stroke={strokeColor[37]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3690,8 +3716,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="625.68079"
             cy="195.43672"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[38]}
+            stroke={strokeColor[38]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3711,8 +3737,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="669.30627"
             cy="186.48553"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[39]}
+            stroke={strokeColor[39]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3732,8 +3758,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="745.3125"
             cy="229.47316"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[40]}
+            stroke={strokeColor[40]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3753,8 +3779,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="779.17072"
             cy="209.88429"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[41]}
+            stroke={strokeColor[41]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3774,8 +3800,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="950.45471"
             cy="210.63693"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[42]}
+            stroke={strokeColor[42]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3795,8 +3821,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="52.591331"
             cy="247.02478"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[43]}
+            stroke={strokeColor[43]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3816,8 +3842,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="145.70999"
             cy="271.10458"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[44]}
+            stroke={strokeColor[44]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3837,8 +3863,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="214.79053"
             cy="283.10504"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[45]}
+            stroke={strokeColor[45]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3858,8 +3884,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="275.17416"
             cy="256.9953"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[46]}
+            stroke={strokeColor[46]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3879,8 +3905,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="320.05286"
             cy="238.58875"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[47]}
+            stroke={strokeColor[47]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3900,8 +3926,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="396.33963"
             cy="283.30963"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[48]}
+            stroke={strokeColor[48]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3921,8 +3947,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="510.01608"
             cy="280.93188"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[49]}
+            stroke={strokeColor[49]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3942,8 +3968,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="558.06464"
             cy="241.32014"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[50]}
+            stroke={strokeColor[50]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3963,8 +3989,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="654.62201"
             cy="252.35388"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[51]}
+            stroke={strokeColor[51]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -3984,8 +4010,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="700.75604"
             cy="235.87636"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[52]}
+            stroke={strokeColor[52]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4005,8 +4031,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="753.57025"
             cy="276.11069"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[53]}
+            stroke={strokeColor[53]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4026,8 +4052,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="789.13385"
             cy="259.43298"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[54]}
+            stroke={strokeColor[54]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4047,8 +4073,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="873.3598"
             cy="258.31061"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[55]}
+            stroke={strokeColor[55]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4068,8 +4094,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="982.45325"
             cy="271.28653"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[56]}
+            stroke={strokeColor[56]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4089,8 +4115,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="82.286629"
             cy="293.68863"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[57]}
+            stroke={strokeColor[57]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4110,8 +4136,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="174.43199"
             cy="308.45334"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[58]}
+            stroke={strokeColor[58]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4131,8 +4157,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="189.20694"
             cy="334.27368"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[59]}
+            stroke={strokeColor[59]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4152,8 +4178,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="226.73618"
             cy="327.16241"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[60]}
+            stroke={strokeColor[60]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4173,8 +4199,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="288.41095"
             cy="337.3938"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[61]}
+            stroke={strokeColor[61]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4194,8 +4220,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="321.95636"
             cy="321.54617"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[62]}
+            stroke={strokeColor[62]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4215,8 +4241,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="403.06802"
             cy="373.8869"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[63]}
+            stroke={strokeColor[63]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4236,8 +4262,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="454.00867"
             cy="361.67966"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[64]}
+            stroke={strokeColor[64]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4257,8 +4283,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="504.41446"
             cy="345.90948"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[65]}
+            stroke={strokeColor[65]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4278,8 +4304,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="535.83643"
             cy="336.37375"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[66]}
+            stroke={strokeColor[66]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4299,8 +4325,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="592.94574"
             cy="322.65686"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[67]}
+            stroke={strokeColor[67]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4320,8 +4346,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="659.23279"
             cy="302.97595"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[68]}
+            stroke={strokeColor[68]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4341,8 +4367,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="719.7384"
             cy="297.16681"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[69]}
+            stroke={strokeColor[69]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4362,8 +4388,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="794.14508"
             cy="313.46014"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[70]}
+            stroke={strokeColor[70]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4383,8 +4409,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="862.23547"
             cy="313.48062"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[71]}
+            stroke={strokeColor[71]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4404,8 +4430,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="932.05475"
             cy="321.97729"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[72]}
+            stroke={strokeColor[72]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4425,8 +4451,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="81.583687"
             cy="344.7608"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[73]}
+            stroke={strokeColor[73]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4446,8 +4472,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="109.72914"
             cy="391.94711"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[74]}
+            stroke={strokeColor[74]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4467,8 +4493,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="156.14526"
             cy="375.99426"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[75]}
+            stroke={strokeColor[75]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4488,8 +4514,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="215.93044"
             cy="373.16641"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[76]}
+            stroke={strokeColor[76]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4509,8 +4535,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="251.6972"
             cy="416.23441"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[77]}
+            stroke={strokeColor[77]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4530,8 +4556,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="302.80154"
             cy="402.12589"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[78]}
+            stroke={strokeColor[78]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4551,8 +4577,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="338.80798"
             cy="394.52795"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[79]}
+            stroke={strokeColor[79]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4572,8 +4598,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="418.71542"
             cy="414.64731"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[80]}
+            stroke={strokeColor[80]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4593,8 +4619,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="488.83429"
             cy="428.3905"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[81]}
+            stroke={strokeColor[81]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4614,8 +4640,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="516.06781"
             cy="403.37393"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[82]}
+            stroke={strokeColor[82]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4635,8 +4661,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="580.67566"
             cy="386.85696"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[83]}
+            stroke={strokeColor[83]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4656,8 +4682,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="627.72021"
             cy="360.44183"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[84]}
+            stroke={strokeColor[84]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4677,8 +4703,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="664.59619"
             cy="342.46494"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[85]}
+            stroke={strokeColor[85]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4698,8 +4724,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="732.93207"
             cy="376.95294"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[86]}
+            stroke={strokeColor[86]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4719,8 +4745,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="798.22974"
             cy="398.96921"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[87]}
+            stroke={strokeColor[87]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4740,8 +4766,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="833.466"
             cy="407.1897"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[88]}
+            stroke={strokeColor[88]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4761,8 +4787,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="859.07739"
             cy="375.03702"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[89]}
+            stroke={strokeColor[89]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4782,8 +4808,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="904.9104"
             cy="376.68112"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[90]}
+            stroke={strokeColor[90]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4803,8 +4829,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="973.00665"
             cy="379.27951"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[91]}
+            stroke={strokeColor[91]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4824,8 +4850,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="51.168648"
             cy="441.69525"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[92]}
+            stroke={strokeColor[92]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4845,8 +4871,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="54.893803"
             cy="476.39517"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[93]}
+            stroke={strokeColor[93]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4866,8 +4892,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="113.24825"
             cy="458.66672"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[94]}
+            stroke={strokeColor[94]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4887,8 +4913,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="146.08047"
             cy="449.94495"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[95]}
+            stroke={strokeColor[95]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4908,8 +4934,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="288.79532"
             cy="473.44312"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[96]}
+            stroke={strokeColor[96]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4929,8 +4955,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="312.03918"
             cy="464.45685"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[97]}
+            stroke={strokeColor[97]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4950,8 +4976,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="355.72827"
             cy="440.56119"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[98]}
+            stroke={strokeColor[98]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4971,8 +4997,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="396.6553"
             cy="446.04736"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[99]}
+            stroke={strokeColor[99]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -4992,8 +5018,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="462.49658"
             cy="476.01227"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[100]}
+            stroke={strokeColor[100]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5013,8 +5039,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="531.83655"
             cy="441.68503"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[101]}
+            stroke={strokeColor[101]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5034,8 +5060,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="619.50409"
             cy="395.871"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[102]}
+            stroke={strokeColor[102]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5055,8 +5081,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="675.08331"
             cy="383.37003"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[103]}
+            stroke={strokeColor[103]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5076,8 +5102,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="732.0874"
             cy="418.34909"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[104]}
+            stroke={strokeColor[104]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5097,8 +5123,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="887.28424"
             cy="435.17877"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[105]}
+            stroke={strokeColor[105]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5118,8 +5144,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="943.91125"
             cy="446.78683"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[106]}
+            stroke={strokeColor[106]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5139,8 +5165,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="987.10205"
             cy="446.44778"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[107]}
+            stroke={strokeColor[107]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5160,8 +5186,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="877.52924"
             cy="524.39978"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[108]}
+            stroke={strokeColor[108]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5181,8 +5207,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="328.33691"
             cy="542.69537"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[109]}
+            stroke={strokeColor[109]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5202,8 +5228,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="378.57172"
             cy="482.39136"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[110]}
+            stroke={strokeColor[110]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5223,8 +5249,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="405.28644"
             cy="524.77686"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[111]}
+            stroke={strokeColor[111]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5244,8 +5270,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="424.6561"
             cy="508.62238"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[112]}
+            stroke={strokeColor[112]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5265,8 +5291,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="493.03732"
             cy="512.60327"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[113]}
+            stroke={strokeColor[113]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5286,8 +5312,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="541.31824"
             cy="489.30679"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[114]}
+            stroke={strokeColor[114]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5307,8 +5333,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="618.19904"
             cy="457.48734"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[115]}
+            stroke={strokeColor[115]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5328,8 +5354,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="735.98645"
             cy="511.41077"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[116]}
+            stroke={strokeColor[116]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5349,8 +5375,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="816.93591"
             cy="551.87891"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[117]}
+            stroke={strokeColor[117]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5370,8 +5396,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="737.55017"
             cy="575.46326"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[118]}
+            stroke={strokeColor[118]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5391,8 +5417,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="985.07355"
             cy="592.52826"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[119]}
+            stroke={strokeColor[119]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5412,8 +5438,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="37.149261"
             cy="638.71637"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[120]}
+            stroke={strokeColor[120]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5433,8 +5459,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="72.201385"
             cy="641.7854"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[121]}
+            stroke={strokeColor[121]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5454,8 +5480,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="121.31674"
             cy="638.91956"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[122]}
+            stroke={strokeColor[122]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5475,8 +5501,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="244.60786"
             cy="631.60223"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[123]}
+            stroke={strokeColor[123]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5496,8 +5522,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="314.38766"
             cy="609.36237"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[124]}
+            stroke={strokeColor[124]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5517,8 +5543,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="446.45462"
             cy="551.26221"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[125]}
+            stroke={strokeColor[125]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5538,8 +5564,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="574.40765"
             cy="522.68268"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[126]}
+            stroke={strokeColor[126]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5559,8 +5585,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="667.72656"
             cy="550.26697"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[127]}
+            stroke={strokeColor[127]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5580,8 +5606,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="788.69983"
             cy="735.85101"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[128]}
+            stroke={strokeColor[128]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5601,8 +5627,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="811.63531"
             cy="585.98547"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[129]}
+            stroke={strokeColor[129]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5622,8 +5648,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="423.67401"
             cy="616.98218"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[130]}
+            stroke={strokeColor[130]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5643,8 +5669,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="463.5108"
             cy="580.00537"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[131]}
+            stroke={strokeColor[131]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5664,8 +5690,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="542.43475"
             cy="577.53119"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[132]}
+            stroke={strokeColor[132]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5685,8 +5711,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="630.56555"
             cy="633.24048"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[133]}
+            stroke={strokeColor[133]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5706,8 +5732,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="695.6908"
             cy="604.98688"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[134]}
+            stroke={strokeColor[134]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5727,8 +5753,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="842.16437"
             cy="623.88446"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[135]}
+            stroke={strokeColor[135]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5748,8 +5774,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="964.74084"
             cy="685.43793"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[136]}
+            stroke={strokeColor[136]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5769,8 +5795,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="197.74309"
             cy="687.92969"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[137]}
+            stroke={strokeColor[137]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5790,8 +5816,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="336.6597"
             cy="650.0979"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[138]}
+            stroke={strokeColor[138]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5811,8 +5837,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="417.88681"
             cy="656.82776"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[139]}
+            stroke={strokeColor[139]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5832,8 +5858,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="540.71906"
             cy="642.82593"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[140]}
+            stroke={strokeColor[140]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5853,8 +5879,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="655.06775"
             cy="656.14966"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[141]}
+            stroke={strokeColor[141]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5874,8 +5900,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="739.24103"
             cy="675.49884"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[142]}
+            stroke={strokeColor[142]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5895,8 +5921,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="814.79492"
             cy="661.05566"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[143]}
+            stroke={strokeColor[143]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5916,8 +5942,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="39.619053"
             cy="758.44165"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[144]}
+            stroke={strokeColor[144]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5937,8 +5963,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="76.220284"
             cy="754.14948"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[145]}
+            stroke={strokeColor[145]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5958,8 +5984,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="124.55231"
             cy="748.44995"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[146]}
+            stroke={strokeColor[146]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -5979,8 +6005,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="161.73372"
             cy="736.7323"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[147]}
+            stroke={strokeColor[147]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6000,8 +6026,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="212.61447"
             cy="725.10229"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[148]}
+            stroke={strokeColor[148]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6021,8 +6047,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="254.65511"
             cy="717.22382"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[149]}
+            stroke={strokeColor[149]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6042,8 +6068,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="304.5611"
             cy="691.8302"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[150]}
+            stroke={strokeColor[150]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6063,8 +6089,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="326.36984"
             cy="725.93677"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[151]}
+            stroke={strokeColor[151]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6084,8 +6110,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="360.59189"
             cy="692.97302"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[152]}
+            stroke={strokeColor[152]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6105,8 +6131,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="380.49347"
             cy="731.70355"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[153]}
+            stroke={strokeColor[153]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6126,8 +6152,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="466.74203"
             cy="705.06042"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[154]}
+            stroke={strokeColor[154]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6147,8 +6173,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="495.43552"
             cy="755.71906"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[155]}
+            stroke={strokeColor[155]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6168,8 +6194,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="553.00958"
             cy="756.79169"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[156]}
+            stroke={strokeColor[156]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6189,8 +6215,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="604.82416"
             cy="760.83838"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[157]}
+            stroke={strokeColor[157]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6210,8 +6236,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="682.91797"
             cy="716.91833"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[158]}
+            stroke={strokeColor[158]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6231,8 +6257,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="687.46155"
             cy="869.10461"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[159]}
+            stroke={strokeColor[159]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6252,8 +6278,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="850.59967"
             cy="755.49396"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[160]}
+            stroke={strokeColor[160]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6273,8 +6299,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="918.35254"
             cy="744.84167"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[161]}
+            stroke={strokeColor[161]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6294,8 +6320,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="1007.2585"
             cy="746.57202"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[162]}
+            stroke={strokeColor[162]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6315,8 +6341,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="116.99824"
             cy="785.94263"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[163]}
+            stroke={strokeColor[163]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6336,8 +6362,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="168.04266"
             cy="783.63507"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[164]}
+            stroke={strokeColor[164]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6357,8 +6383,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="263.70715"
             cy="806.45947"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[165]}
+            stroke={strokeColor[165]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6378,8 +6404,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="365.57532"
             cy="775.31812"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[166]}
+            stroke={strokeColor[166]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6399,8 +6425,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="443.37247"
             cy="796.46484"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[167]}
+            stroke={strokeColor[167]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6420,8 +6446,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="472.81421"
             cy="824.14117"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[168]}
+            stroke={strokeColor[168]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6441,8 +6467,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="549.88507"
             cy="810.38483"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[169]}
+            stroke={strokeColor[169]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6462,8 +6488,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="595.78821"
             cy="819.11096"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[170]}
+            stroke={strokeColor[170]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6483,8 +6509,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="907.69147"
             cy="969.67072"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[171]}
+            stroke={strokeColor[171]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6504,8 +6530,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="764.10999"
             cy="810.76776"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[172]}
+            stroke={strokeColor[172]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6525,8 +6551,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="871.43805"
             cy="855.27234"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[173]}
+            stroke={strokeColor[173]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6546,8 +6572,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="959.10712"
             cy="818.52643"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[174]}
+            stroke={strokeColor[174]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6567,8 +6593,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="1007.7679"
             cy="869.93182"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[175]}
+            stroke={strokeColor[175]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6588,8 +6614,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="16.796076"
             cy="855.58215"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[176]}
+            stroke={strokeColor[176]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6609,8 +6635,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="58.45089"
             cy="842.96716"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[177]}
+            stroke={strokeColor[177]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6630,8 +6656,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="134.41104"
             cy="834.16797"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[178]}
+            stroke={strokeColor[178]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6651,8 +6677,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="224.90062"
             cy="845.04382"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[179]}
+            stroke={strokeColor[179]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6672,8 +6698,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="280.97235"
             cy="861.73907"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[180]}
+            stroke={strokeColor[180]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6693,8 +6719,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="340.18024"
             cy="838.90002"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[181]}
+            stroke={strokeColor[181]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6714,8 +6740,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="367.06012"
             cy="851.3075"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[182]}
+            stroke={strokeColor[182]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6735,8 +6761,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="419.6098"
             cy="818.3642"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[183]}
+            stroke={strokeColor[183]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6756,8 +6782,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="521.92517"
             cy="872.38556"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[184]}
+            stroke={strokeColor[184]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6777,8 +6803,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="578.03784"
             cy="929.28149"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[185]}
+            stroke={strokeColor[185]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6798,8 +6824,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="644.1568"
             cy="909.62103"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[186]}
+            stroke={strokeColor[186]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6819,8 +6845,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="739.19427"
             cy="875.14471"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[187]}
+            stroke={strokeColor[187]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6840,8 +6866,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="834.70679"
             cy="879.44421"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[188]}
+            stroke={strokeColor[188]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6861,8 +6887,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="55.339531"
             cy="939.54938"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[189]}
+            stroke={strokeColor[189]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6882,8 +6908,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="96.589531"
             cy="977.46008"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[190]}
+            stroke={strokeColor[190]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6903,8 +6929,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="161.90471"
             cy="909.13287"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[191]}
+            stroke={strokeColor[191]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6924,8 +6950,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="171.94466"
             cy="998.83618"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[192]}
+            stroke={strokeColor[192]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6945,8 +6971,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="318.33496"
             cy="913.7627"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[193]}
+            stroke={strokeColor[193]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6966,8 +6992,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="334.20303"
             cy="943.86353"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[194]}
+            stroke={strokeColor[194]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -6987,8 +7013,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="378.74857"
             cy="939.42517"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[195]}
+            stroke={strokeColor[195]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -7008,8 +7034,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="441.6217"
             cy="891.90863"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[196]}
+            stroke={strokeColor[196]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -7029,8 +7055,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="451.03909"
             cy="952.07227"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[197]}
+            stroke={strokeColor[197]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -7050,8 +7076,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="688.69348"
             cy="1001.3235"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[198]}
+            stroke={strokeColor[198]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
@@ -7071,8 +7097,8 @@ export default function Page({ params }: { params: { id: string } }) {
             cx="847.70312"
             cy="991.42535"
             r="12"
-            fill="white"
-            stroke="black"
+            fill={fillColor[199]}
+            stroke={strokeColor[199]}
             onClick={(event) => {
               const target = event.target as HTMLInputElement;
               onClickNode(parseInt(target.id.substring(8)));
