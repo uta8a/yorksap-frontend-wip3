@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import useSWR, { Fetcher } from "swr";
-import {Map} from './components/map';
+import { Map } from "./components/map";
 
 type RoomResponse = {
   roomName: string;
@@ -12,11 +12,26 @@ type RoomResponse = {
 
 type GameResponse = {
   phase: number;
-  turn: number;
+  turn: string;
   nowPosition: Player[];
   history?: Phase[];
+  ticket?: Ticket[];
+  next: NextMove[];
 };
 
+type NormalWay = "TAXI" | "BUS" | "UNDERGROUND" | "SECRET";
+type DoubleWay = "DOUBLE";
+type NormalMove = [NormalWay, number];
+
+type NextMove = NormalMove | [DoubleWay, NormalMove, NormalMove];
+
+type Ticket = {
+  TAXI: string;
+  BUS: string;
+  UNDERGROUND: string;
+  SECRET: string;
+  DOUBLE: string;
+};
 type Player = {
   name: string;
   position?: number;
@@ -65,12 +80,64 @@ const getGameData: Fetcher<GameResponse, string> = async (url) => {
   }
   return res.json();
 };
+const getNextMove = (next: NextMove): number => {
+  if (next[0] === "DOUBLE") {
+    return next[2][1];
+  } else {
+    return next[1];
+  }
+};
+const getNextMoves = (nexts: NextMove[]): number[] => {
+  const arr = [];
+  for (const next of nexts) {
+    arr.push(getNextMove(next));
+  }
+  return arr;
+};
+const getNowTurnPosition = (turn: string, nowPosition: Player[]): number => {
+  for (const player of nowPosition) {
+    if (player.name === turn) {
+      return player.position || 0;
+    }
+  }
+  return 0;
+};
+
+const listNextWay = (
+  nowPosition: number,
+  destPosition: number,
+  next: NextMove[]
+): (
+  | [number, number, NormalWay]
+  | [DoubleWay, [number, number, NormalWay], [number, number, NormalWay]]
+)[] => {
+  const arr: (
+    | [number, number, NormalWay]
+    | [DoubleWay, [number, number, NormalWay], [number, number, NormalWay]]
+  )[] = [];
+  for (const nextMove of next) {
+    if (getNextMove(nextMove) === destPosition) {
+      if (nextMove[0] === "DOUBLE") {
+        arr.push([
+          "DOUBLE",
+          [nowPosition, nextMove[1][1], nextMove[1][0]],
+          [nextMove[1][1], nextMove[2][1], nextMove[2][0]],
+        ]);
+      } else {
+        arr.push([nowPosition, nextMove[1], nextMove[0]]);
+      }
+    }
+  }
+  return arr;
+};
 
 export default function Page({ params }: { params: { id: string } }) {
   const [strokeColor, setStrokeColor] = useState<any>([]);
   const [fillColor, setFillColor] = useState<any>([]);
+  const [dest, setDest] = useState<number>(0);
 
   const onClickNode = (nodeId: number) => {
+    setDest(nodeId);
     const arr = [];
     for (let i = 0; i < 200; i++) {
       arr.push("#C9C9C9");
@@ -116,6 +183,17 @@ export default function Page({ params }: { params: { id: string } }) {
     setFillColor(arr2);
   }, [gameResponse.data?.nowPosition]);
   console.log("data", roomResponse, gameResponse);
+  console.log(
+    "listNextWay",
+    listNextWay(
+      getNowTurnPosition(
+        gameResponse.data?.turn || "",
+        gameResponse.data?.nowPosition || []
+      ),
+      dest,
+      gameResponse.data?.next || []
+    )
+  );
   if (roomResponse.error || gameResponse.error)
     return (
       <main>
@@ -138,8 +216,19 @@ export default function Page({ params }: { params: { id: string } }) {
         Room: {roomResponse.data?.roomName}
       </h1>
       <div className="flex justify-center text-center">
-      <Map onClickNode={onClickNode} fillColor={fillColor} strokeColor={strokeColor} candidates={[]} />
+        <Map
+          onClickNode={onClickNode}
+          fillColor={fillColor}
+          strokeColor={strokeColor}
+          candidates={getNextMoves(gameResponse.data?.next || [])}
+          highlightColor="#ff00ff"
+        />
       </div>
+      <div className="text-center">
+        Turn: {gameResponse.data?.turn} / Phase:{" "}
+        {gameResponse.data?.phase || 0 + 1}
+      </div>
+      <div className="text-center">Move: {}</div>
       <div className="flex justify-center">
         <table>
           <thead>
@@ -147,6 +236,17 @@ export default function Page({ params }: { params: { id: string } }) {
               <th></th>
               {gameResponse.data?.nowPosition.map((value, index) => {
                 return <th key={`thead-${index}`}>{value.name}</th>;
+              })}
+            </tr>
+            <tr>
+              <th></th>
+              {gameResponse.data?.ticket?.map((value, index) => {
+                return (
+                  <th key={`thead-${index}`}>
+                    {value.BUS} / {value.TAXI} / {value.UNDERGROUND} /{" "}
+                    {value.SECRET} / {value.DOUBLE}
+                  </th>
+                );
               })}
             </tr>
           </thead>
@@ -184,6 +284,10 @@ export default function Page({ params }: { params: { id: string } }) {
           </tbody>
         </table>
       </div>
+      <div className="text-center">
+        Ticket: BUS / TAXI / UNDERGROUND / SECRET / DOUBLE
+      </div>
+
       <button
         onClick={() => {
           Cookies.remove("accessToken");
