@@ -3,7 +3,7 @@ import { error } from "console";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import useSWR, { Fetcher } from "swr";
+import useSWR, { Fetcher, useSWRConfig } from "swr";
 import { Map } from "./components/map";
 import { useForm } from "react-hook-form";
 
@@ -141,6 +141,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const [fillColor, setFillColor] = useState<any>([]);
   const [dest, setDest] = useState<number>(0);
   const moveForm = useForm<MovePost>();
+  // const { mutate } = useSWRConfig();
 
   const onMoveSubmit = (data: MovePost) => {
     console.log("onMoveSubmit", data);
@@ -163,7 +164,8 @@ export default function Page({ params }: { params: { id: string } }) {
         if (res.status === 200) {
           return res.json().then((_) => {
             console.log("ok");
-            // window.location.reload();
+            roomResponse.mutate();
+            gameResponse.mutate();
           });
         } else {
           alert("移動に失敗しました");
@@ -190,7 +192,8 @@ export default function Page({ params }: { params: { id: string } }) {
         if (res.status === 200) {
           return res.json().then((_) => {
             console.log("ok");
-            // window.location.reload();
+            roomResponse.mutate();
+            gameResponse.mutate();
           });
         } else {
           alert("移動に失敗しました");
