@@ -138,7 +138,7 @@ export default function Page({ params }: { params: { id: string } }) {
         Room: {roomResponse.data?.roomName}
       </h1>
       <div className="flex justify-center text-center">
-      <Map onClickNode={onClickNode} fillColor={fillColor} strokeColor={strokeColor} />
+      <Map onClickNode={onClickNode} fillColor={fillColor} strokeColor={strokeColor} candidates={[]} />
       </div>
       <div className="flex justify-center">
         <table>

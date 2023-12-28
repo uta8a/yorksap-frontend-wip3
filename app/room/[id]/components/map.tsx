@@ -4,9 +4,18 @@ type Props = {
     onClickNode: (nodeId: number) => void;
     fillColor: string[];
     strokeColor: string[];
+    candidates: number[];
+    highlightColor?: string;
 };
 
-export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
+export const Map = ({onClickNode, fillColor, strokeColor, candidates, highlightColor}: Props) => {
+    const candidateTable = new Array(200).fill(false);
+    for (const candidate of candidates) {
+        candidateTable[candidate] = true;
+    }
+
+    highlightColor = highlightColor || '#ff5c61';
+
     return (
       <svg
         width="1024"
@@ -2841,7 +2850,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[1] && (<animate
+            attributeName="fill"
+            values={`${fillColor[1]};${highlightColor};${fillColor[1]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="137.95363"
           y="64.076096"
@@ -2862,7 +2877,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[2] && (<animate
+            attributeName="fill"
+            values={`${fillColor[2]};${highlightColor};${fillColor[2]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="312.50552"
           y="39.924683"
@@ -2883,7 +2904,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[3] && (<animate
+            attributeName="fill"
+            values={`${fillColor[3]};${highlightColor};${fillColor[3]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="425.79761"
           y="37.459274"
@@ -2904,7 +2931,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[4] && (<animate
+            attributeName="fill"
+            values={`${fillColor[4]};${highlightColor};${fillColor[4]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="495.95227"
           y="26.804806"
@@ -2925,7 +2958,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[5] && (<animate
+            attributeName="fill"
+            values={`${fillColor[5]};${highlightColor};${fillColor[5]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="773.21185"
           y="37.223984"
@@ -2946,7 +2985,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[6] && (<animate
+            attributeName="fill"
+            values={`${fillColor[6]};${highlightColor};${fillColor[6]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="860.35254"
           y="36.290138"
@@ -2967,7 +3012,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[7] && (<animate
+            attributeName="fill"
+            values={`${fillColor[7]};${highlightColor};${fillColor[7]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="943.27789"
           y="46.453575"
@@ -2988,7 +3039,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[8] && (<animate
+            attributeName="fill"
+            values={`${fillColor[8]};${highlightColor};${fillColor[8]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="99.56148"
           y="120.09702"
@@ -3009,7 +3066,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[9] && (<animate
+            attributeName="fill"
+            values={`${fillColor[9]};${highlightColor};${fillColor[9]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="169.98067"
           y="118.86467"
@@ -3030,7 +3093,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[10] && (<animate
+            attributeName="fill"
+            values={`${fillColor[10]};${highlightColor};${fillColor[10]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="369.99841"
           y="103.69551"
@@ -3051,7 +3120,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[11] && (<animate
+            attributeName="fill"
+            values={`${fillColor[11]};${highlightColor};${fillColor[11]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="422.57043"
           y="112.498"
@@ -3072,7 +3147,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[12] && (<animate
+            attributeName="fill"
+            values={`${fillColor[12]};${highlightColor};${fillColor[12]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="466.96646"
           y="99.624352"
@@ -3093,7 +3174,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[13] && (<animate
+            attributeName="fill"
+            values={`${fillColor[13]};${highlightColor};${fillColor[13]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="547.24951"
           y="93.440384"
@@ -3114,7 +3201,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[14] && (<animate
+            attributeName="fill"
+            values={`${fillColor[14]};${highlightColor};${fillColor[14]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="630.16016"
           y="70.927223"
@@ -3135,7 +3228,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[15] && (<animate
+            attributeName="fill"
+            values={`${fillColor[15]};${highlightColor};${fillColor[15]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="712.87207"
           y="61.313278"
@@ -3156,7 +3255,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[16] && (<animate
+            attributeName="fill"
+            values={`${fillColor[16]};${highlightColor};${fillColor[16]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="793.14563"
           y="101.218048"
@@ -3177,7 +3282,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[17] && (<animate
+            attributeName="fill"
+            values={`${fillColor[17]};${highlightColor};${fillColor[17]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="937.83337"
           y="133.9677"
@@ -3198,7 +3309,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[18] && (<animate
+            attributeName="fill"
+            values={`${fillColor[18]};${highlightColor};${fillColor[18]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="62.859413"
           y="162.61589"
@@ -3219,7 +3336,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[19] && (<animate
+            attributeName="fill"
+            values={`${fillColor[19]};${highlightColor};${fillColor[19]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="126.42819"
           y="170.50096"
@@ -3240,7 +3363,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[20] && (<animate
+            attributeName="fill"
+            values={`${fillColor[20]};${highlightColor};${fillColor[20]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="207.5172"
           y="139.85501"
@@ -3261,7 +3390,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[21] && (<animate
+            attributeName="fill"
+            values={`${fillColor[21]};${highlightColor};${fillColor[21]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="290.96857"
           y="183.67493"
@@ -3282,7 +3417,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[22] && (<animate
+            attributeName="fill"
+            values={`${fillColor[22]};${highlightColor};${fillColor[22]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="425.69092"
           y="193.67252"
@@ -3303,7 +3444,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[23] && (<animate
+            attributeName="fill"
+            values={`${fillColor[23]};${highlightColor};${fillColor[23]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="490.80444"
           y="144.53888"
@@ -3324,7 +3471,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[24] && (<animate
+            attributeName="fill"
+            values={`${fillColor[24]};${highlightColor};${fillColor[24]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="594.79456"
           y="150.62567"
@@ -3345,7 +3498,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[25] && (<animate
+            attributeName="fill"
+            values={`${fillColor[25]};${highlightColor};${fillColor[25]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="640.79126"
           y="166.15764"
@@ -3366,7 +3525,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[26] && (<animate
+            attributeName="fill"
+            values={`${fillColor[26]};${highlightColor};${fillColor[26]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="707.15356"
           y="97.843628"
@@ -3387,7 +3552,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[27] && (<animate
+            attributeName="fill"
+            values={`${fillColor[27]};${highlightColor};${fillColor[27]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="717.44342"
           y="150.89021"
@@ -3408,7 +3579,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[28] && (<animate
+            attributeName="fill"
+            values={`${fillColor[28]};${highlightColor};${fillColor[28]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="748.1076"
           y="132.02621"
@@ -3429,7 +3606,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[29] && (<animate
+            attributeName="fill"
+            values={`${fillColor[29]};${highlightColor};${fillColor[29]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="860.66241"
           y="160.69121"
@@ -3450,7 +3633,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[30] && (<animate
+            attributeName="fill"
+            values={`${fillColor[30]};${highlightColor};${fillColor[30]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="966.65985"
           y="155.17581"
@@ -3471,7 +3660,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[31] && (<animate
+            attributeName="fill"
+            values={`${fillColor[31]};${highlightColor};${fillColor[31]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="88.253754"
           y="202.17503"
@@ -3492,7 +3687,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[32] && (<animate
+            attributeName="fill"
+            values={`${fillColor[32]};${highlightColor};${fillColor[32]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="183.19846"
           y="228.69246"
@@ -3513,7 +3714,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[33] && (<animate
+            attributeName="fill"
+            values={`${fillColor[33]};${highlightColor};${fillColor[33]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="253.73459000000003"
           y="209.88477"
@@ -3534,7 +3741,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[34] && (<animate
+            attributeName="fill"
+            values={`${fillColor[34]};${highlightColor};${fillColor[34]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="374.03928"
           y="222.23373"
@@ -3555,7 +3768,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[35] && (<animate
+            attributeName="fill"
+            values={`${fillColor[35]};${highlightColor};${fillColor[35]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="446.81717"
           y="242.55623"
@@ -3576,7 +3795,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[36] && (<animate
+            attributeName="fill"
+            values={`${fillColor[36]};${highlightColor};${fillColor[36]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="477.21323"
           y="247.57619"
@@ -3597,7 +3822,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[37] && (<animate
+            attributeName="fill"
+            values={`${fillColor[37]};${highlightColor};${fillColor[37]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="519.96265"
           y="194.85478"
@@ -3618,7 +3849,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[38] && (<animate
+            attributeName="fill"
+            values={`${fillColor[38]};${highlightColor};${fillColor[38]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="616.68079"
           y="198.43672"
@@ -3639,7 +3876,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[39] && (<animate
+            attributeName="fill"
+            values={`${fillColor[39]};${highlightColor};${fillColor[39]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="660.30627"
           y="189.48553"
@@ -3660,7 +3903,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[40] && (<animate
+            attributeName="fill"
+            values={`${fillColor[40]};${highlightColor};${fillColor[40]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="736.3125"
           y="232.47316"
@@ -3681,7 +3930,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[41] && (<animate
+            attributeName="fill"
+            values={`${fillColor[41]};${highlightColor};${fillColor[41]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="770.17072"
           y="212.88429"
@@ -3702,7 +3957,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[42] && (<animate
+            attributeName="fill"
+            values={`${fillColor[42]};${highlightColor};${fillColor[42]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="941.45471"
           y="213.63693"
@@ -3723,7 +3984,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[43] && (<animate
+            attributeName="fill"
+            values={`${fillColor[43]};${highlightColor};${fillColor[43]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="43.591331"
           y="250.02478"
@@ -3744,7 +4011,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[44] && (<animate
+            attributeName="fill"
+            values={`${fillColor[44]};${highlightColor};${fillColor[44]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="136.70999"
           y="274.10458"
@@ -3765,7 +4038,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[45] && (<animate
+            attributeName="fill"
+            values={`${fillColor[45]};${highlightColor};${fillColor[45]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="205.79053"
           y="286.10504"
@@ -3786,7 +4065,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[46] && (<animate
+            attributeName="fill"
+            values={`${fillColor[46]};${highlightColor};${fillColor[46]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="266.17416"
           y="259.9953"
@@ -3807,7 +4092,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[47] && (<animate
+            attributeName="fill"
+            values={`${fillColor[47]};${highlightColor};${fillColor[47]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="311.05286"
           y="241.58875"
@@ -3828,7 +4119,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[48] && (<animate
+            attributeName="fill"
+            values={`${fillColor[48]};${highlightColor};${fillColor[48]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="387.33963"
           y="286.30963"
@@ -3849,7 +4146,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[49] && (<animate
+            attributeName="fill"
+            values={`${fillColor[49]};${highlightColor};${fillColor[49]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="501.01608"
           y="283.93188"
@@ -3870,7 +4173,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[50] && (<animate
+            attributeName="fill"
+            values={`${fillColor[50]};${highlightColor};${fillColor[50]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="549.06464"
           y="244.32014"
@@ -3891,7 +4200,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[51] && (<animate
+            attributeName="fill"
+            values={`${fillColor[51]};${highlightColor};${fillColor[51]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="645.62201"
           y="255.35388"
@@ -3912,7 +4227,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[52] && (<animate
+            attributeName="fill"
+            values={`${fillColor[52]};${highlightColor};${fillColor[52]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="691.75604"
           y="238.87636"
@@ -3933,7 +4254,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[53] && (<animate
+            attributeName="fill"
+            values={`${fillColor[53]};${highlightColor};${fillColor[53]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="744.57025"
           y="279.11069"
@@ -3954,7 +4281,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[54] && (<animate
+            attributeName="fill"
+            values={`${fillColor[54]};${highlightColor};${fillColor[54]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="780.13385"
           y="262.43298"
@@ -3975,7 +4308,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[55] && (<animate
+            attributeName="fill"
+            values={`${fillColor[55]};${highlightColor};${fillColor[55]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="864.3598"
           y="261.31061"
@@ -3996,7 +4335,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[56] && (<animate
+            attributeName="fill"
+            values={`${fillColor[56]};${highlightColor};${fillColor[56]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="973.45325"
           y="274.28653"
@@ -4017,7 +4362,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[57] && (<animate
+            attributeName="fill"
+            values={`${fillColor[57]};${highlightColor};${fillColor[57]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="73.286629"
           y="296.68863"
@@ -4038,7 +4389,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[58] && (<animate
+            attributeName="fill"
+            values={`${fillColor[58]};${highlightColor};${fillColor[58]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="165.43199"
           y="311.45334"
@@ -4059,7 +4416,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[59] && (<animate
+            attributeName="fill"
+            values={`${fillColor[59]};${highlightColor};${fillColor[59]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="180.20694"
           y="337.27368"
@@ -4080,7 +4443,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[60] && (<animate
+            attributeName="fill"
+            values={`${fillColor[60]};${highlightColor};${fillColor[60]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="217.73618"
           y="330.16241"
@@ -4101,7 +4470,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[61] && (<animate
+            attributeName="fill"
+            values={`${fillColor[61]};${highlightColor};${fillColor[61]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="279.41095"
           y="340.3938"
@@ -4122,7 +4497,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[62] && (<animate
+            attributeName="fill"
+            values={`${fillColor[62]};${highlightColor};${fillColor[62]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="312.95636"
           y="324.54617"
@@ -4143,7 +4524,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[63] && (<animate
+            attributeName="fill"
+            values={`${fillColor[63]};${highlightColor};${fillColor[63]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="394.06802"
           y="376.8869"
@@ -4164,7 +4551,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[64] && (<animate
+            attributeName="fill"
+            values={`${fillColor[64]};${highlightColor};${fillColor[64]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="445.00867"
           y="364.67966"
@@ -4185,7 +4578,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[65] && (<animate
+            attributeName="fill"
+            values={`${fillColor[65]};${highlightColor};${fillColor[65]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="495.41446"
           y="348.90948"
@@ -4206,7 +4605,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[66] && (<animate
+            attributeName="fill"
+            values={`${fillColor[66]};${highlightColor};${fillColor[66]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="526.83643"
           y="339.37375"
@@ -4227,7 +4632,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[67] && (<animate
+            attributeName="fill"
+            values={`${fillColor[67]};${highlightColor};${fillColor[67]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="583.94574"
           y="325.65686"
@@ -4248,7 +4659,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[68] && (<animate
+            attributeName="fill"
+            values={`${fillColor[68]};${highlightColor};${fillColor[68]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="650.23279"
           y="305.97595"
@@ -4269,7 +4686,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[69] && (<animate
+            attributeName="fill"
+            values={`${fillColor[69]};${highlightColor};${fillColor[69]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="710.7384"
           y="300.16681"
@@ -4290,7 +4713,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[70] && (<animate
+            attributeName="fill"
+            values={`${fillColor[70]};${highlightColor};${fillColor[70]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="785.14508"
           y="316.46014"
@@ -4311,7 +4740,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[71] && (<animate
+            attributeName="fill"
+            values={`${fillColor[71]};${highlightColor};${fillColor[71]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="853.23547"
           y="316.48062"
@@ -4332,7 +4767,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[72] && (<animate
+            attributeName="fill"
+            values={`${fillColor[72]};${highlightColor};${fillColor[72]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="923.05475"
           y="324.97729"
@@ -4353,7 +4794,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[73] && (<animate
+            attributeName="fill"
+            values={`${fillColor[73]};${highlightColor};${fillColor[73]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="72.583687"
           y="347.7608"
@@ -4374,7 +4821,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[74] && (<animate
+            attributeName="fill"
+            values={`${fillColor[74]};${highlightColor};${fillColor[74]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="100.72914"
           y="394.94711"
@@ -4395,7 +4848,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[75] && (<animate
+            attributeName="fill"
+            values={`${fillColor[75]};${highlightColor};${fillColor[75]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="147.14526"
           y="378.99426"
@@ -4416,7 +4875,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[76] && (<animate
+            attributeName="fill"
+            values={`${fillColor[76]};${highlightColor};${fillColor[76]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="206.93044"
           y="376.16641"
@@ -4437,7 +4902,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[77] && (<animate
+            attributeName="fill"
+            values={`${fillColor[77]};${highlightColor};${fillColor[77]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="242.6972"
           y="419.23441"
@@ -4458,7 +4929,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[78] && (<animate
+            attributeName="fill"
+            values={`${fillColor[78]};${highlightColor};${fillColor[78]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="293.80154"
           y="405.12589"
@@ -4479,7 +4956,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[79] && (<animate
+            attributeName="fill"
+            values={`${fillColor[79]};${highlightColor};${fillColor[79]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="329.80798"
           y="397.52795"
@@ -4500,7 +4983,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[80] && (<animate
+            attributeName="fill"
+            values={`${fillColor[80]};${highlightColor};${fillColor[80]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="409.71542"
           y="417.64731"
@@ -4521,7 +5010,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[81] && (<animate
+            attributeName="fill"
+            values={`${fillColor[81]};${highlightColor};${fillColor[81]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="479.83429"
           y="431.3905"
@@ -4542,7 +5037,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[82] && (<animate
+            attributeName="fill"
+            values={`${fillColor[82]};${highlightColor};${fillColor[82]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="507.06781"
           y="406.37393"
@@ -4563,7 +5064,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[83] && (<animate
+            attributeName="fill"
+            values={`${fillColor[83]};${highlightColor};${fillColor[83]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="571.67566"
           y="389.85696"
@@ -4584,7 +5091,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[84] && (<animate
+            attributeName="fill"
+            values={`${fillColor[84]};${highlightColor};${fillColor[84]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="618.72021"
           y="363.44183"
@@ -4605,7 +5118,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[85] && (<animate
+            attributeName="fill"
+            values={`${fillColor[85]};${highlightColor};${fillColor[85]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="655.59619"
           y="345.46494"
@@ -4626,7 +5145,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[86] && (<animate
+            attributeName="fill"
+            values={`${fillColor[86]};${highlightColor};${fillColor[86]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="723.93207"
           y="379.95294"
@@ -4647,7 +5172,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[87] && (<animate
+            attributeName="fill"
+            values={`${fillColor[87]};${highlightColor};${fillColor[87]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="789.22974"
           y="401.96921"
@@ -4668,7 +5199,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[88] && (<animate
+            attributeName="fill"
+            values={`${fillColor[88]};${highlightColor};${fillColor[88]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="824.466"
           y="410.1897"
@@ -4689,7 +5226,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[89] && (<animate
+            attributeName="fill"
+            values={`${fillColor[89]};${highlightColor};${fillColor[89]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="850.07739"
           y="378.03702"
@@ -4710,7 +5253,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[90] && (<animate
+            attributeName="fill"
+            values={`${fillColor[90]};${highlightColor};${fillColor[90]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="895.9104"
           y="379.68112"
@@ -4731,7 +5280,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[91] && (<animate
+            attributeName="fill"
+            values={`${fillColor[91]};${highlightColor};${fillColor[91]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="964.00665"
           y="382.27951"
@@ -4752,7 +5307,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[92] && (<animate
+            attributeName="fill"
+            values={`${fillColor[92]};${highlightColor};${fillColor[92]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="42.168648"
           y="444.69525"
@@ -4773,7 +5334,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[93] && (<animate
+            attributeName="fill"
+            values={`${fillColor[93]};${highlightColor};${fillColor[93]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="45.893803"
           y="479.39517"
@@ -4794,7 +5361,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[94] && (<animate
+            attributeName="fill"
+            values={`${fillColor[94]};${highlightColor};${fillColor[94]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="104.24825"
           y="461.66672"
@@ -4815,7 +5388,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[95] && (<animate
+            attributeName="fill"
+            values={`${fillColor[95]};${highlightColor};${fillColor[95]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="137.08047"
           y="452.94495"
@@ -4836,7 +5415,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[96] && (<animate
+            attributeName="fill"
+            values={`${fillColor[96]};${highlightColor};${fillColor[96]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="279.79532"
           y="476.44312"
@@ -4857,7 +5442,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[97] && (<animate
+            attributeName="fill"
+            values={`${fillColor[97]};${highlightColor};${fillColor[97]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="303.03918"
           y="467.45685"
@@ -4878,7 +5469,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[98] && (<animate
+            attributeName="fill"
+            values={`${fillColor[98]};${highlightColor};${fillColor[98]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="346.72827"
           y="443.56119"
@@ -4899,7 +5496,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[99] && (<animate
+            attributeName="fill"
+            values={`${fillColor[99]};${highlightColor};${fillColor[99]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="387.6553"
           y="449.04736"
@@ -4920,7 +5523,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[100] && (<animate
+            attributeName="fill"
+            values={`${fillColor[100]};${highlightColor};${fillColor[100]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="453.49658"
           y="479.01227"
@@ -4941,7 +5550,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[101] && (<animate
+            attributeName="fill"
+            values={`${fillColor[101]};${highlightColor};${fillColor[101]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="522.83655"
           y="444.68503"
@@ -4962,7 +5577,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[102] && (<animate
+            attributeName="fill"
+            values={`${fillColor[102]};${highlightColor};${fillColor[102]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="610.50409"
           y="398.871"
@@ -4983,7 +5604,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[103] && (<animate
+            attributeName="fill"
+            values={`${fillColor[103]};${highlightColor};${fillColor[103]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="666.08331"
           y="386.37003"
@@ -5004,7 +5631,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[104] && (<animate
+            attributeName="fill"
+            values={`${fillColor[104]};${highlightColor};${fillColor[104]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="723.0874"
           y="421.34909"
@@ -5025,7 +5658,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[105] && (<animate
+            attributeName="fill"
+            values={`${fillColor[105]};${highlightColor};${fillColor[105]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="878.28424"
           y="438.17877"
@@ -5046,7 +5685,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[106] && (<animate
+            attributeName="fill"
+            values={`${fillColor[106]};${highlightColor};${fillColor[106]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="934.91125"
           y="449.78683"
@@ -5067,7 +5712,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[107] && (<animate
+            attributeName="fill"
+            values={`${fillColor[107]};${highlightColor};${fillColor[107]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="978.10205"
           y="449.44778"
@@ -5088,7 +5739,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[108] && (<animate
+            attributeName="fill"
+            values={`${fillColor[108]};${highlightColor};${fillColor[108]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="868.52924"
           y="527.39978"
@@ -5109,7 +5766,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[109] && (<animate
+            attributeName="fill"
+            values={`${fillColor[109]};${highlightColor};${fillColor[109]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="319.33691"
           y="545.69537"
@@ -5130,7 +5793,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[110] && (<animate
+            attributeName="fill"
+            values={`${fillColor[110]};${highlightColor};${fillColor[110]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="369.57172"
           y="485.39136"
@@ -5151,7 +5820,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[111] && (<animate
+            attributeName="fill"
+            values={`${fillColor[111]};${highlightColor};${fillColor[111]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="396.28644"
           y="527.77686"
@@ -5172,7 +5847,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[112] && (<animate
+            attributeName="fill"
+            values={`${fillColor[112]};${highlightColor};${fillColor[112]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="415.6561"
           y="511.62238"
@@ -5193,7 +5874,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[113] && (<animate
+            attributeName="fill"
+            values={`${fillColor[113]};${highlightColor};${fillColor[113]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="484.03732"
           y="515.60327"
@@ -5214,7 +5901,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[114] && (<animate
+            attributeName="fill"
+            values={`${fillColor[114]};${highlightColor};${fillColor[114]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="532.31824"
           y="492.30679"
@@ -5235,7 +5928,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[115] && (<animate
+            attributeName="fill"
+            values={`${fillColor[115]};${highlightColor};${fillColor[115]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="609.19904"
           y="460.48734"
@@ -5256,7 +5955,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[116] && (<animate
+            attributeName="fill"
+            values={`${fillColor[116]};${highlightColor};${fillColor[116]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="726.98645"
           y="514.41077"
@@ -5277,7 +5982,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[117] && (<animate
+            attributeName="fill"
+            values={`${fillColor[117]};${highlightColor};${fillColor[117]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="807.93591"
           y="554.87891"
@@ -5298,7 +6009,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[118] && (<animate
+            attributeName="fill"
+            values={`${fillColor[118]};${highlightColor};${fillColor[118]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="728.55017"
           y="578.46326"
@@ -5319,7 +6036,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[119] && (<animate
+            attributeName="fill"
+            values={`${fillColor[119]};${highlightColor};${fillColor[119]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="976.07355"
           y="595.52826"
@@ -5340,7 +6063,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[120] && (<animate
+            attributeName="fill"
+            values={`${fillColor[120]};${highlightColor};${fillColor[120]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="28.149261000000003"
           y="641.71637"
@@ -5361,7 +6090,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[121] && (<animate
+            attributeName="fill"
+            values={`${fillColor[121]};${highlightColor};${fillColor[121]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="63.201385"
           y="644.7854"
@@ -5382,7 +6117,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[122] && (<animate
+            attributeName="fill"
+            values={`${fillColor[122]};${highlightColor};${fillColor[122]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="112.31674"
           y="641.91956"
@@ -5403,7 +6144,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[123] && (<animate
+            attributeName="fill"
+            values={`${fillColor[123]};${highlightColor};${fillColor[123]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="235.60786"
           y="634.60223"
@@ -5424,7 +6171,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[124] && (<animate
+            attributeName="fill"
+            values={`${fillColor[124]};${highlightColor};${fillColor[124]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="305.38766"
           y="612.36237"
@@ -5445,7 +6198,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[125] && (<animate
+            attributeName="fill"
+            values={`${fillColor[125]};${highlightColor};${fillColor[125]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="437.45462"
           y="554.26221"
@@ -5466,7 +6225,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[126] && (<animate
+            attributeName="fill"
+            values={`${fillColor[126]};${highlightColor};${fillColor[126]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="565.40765"
           y="525.68268"
@@ -5487,7 +6252,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[127] && (<animate
+            attributeName="fill"
+            values={`${fillColor[127]};${highlightColor};${fillColor[127]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="658.72656"
           y="553.26697"
@@ -5508,7 +6279,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[128] && (<animate
+            attributeName="fill"
+            values={`${fillColor[128]};${highlightColor};${fillColor[128]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="779.69983"
           y="738.85101"
@@ -5529,7 +6306,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[129] && (<animate
+            attributeName="fill"
+            values={`${fillColor[129]};${highlightColor};${fillColor[129]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="802.63531"
           y="588.98547"
@@ -5550,7 +6333,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[130] && (<animate
+            attributeName="fill"
+            values={`${fillColor[130]};${highlightColor};${fillColor[130]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="414.67401"
           y="619.98218"
@@ -5571,7 +6360,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[131] && (<animate
+            attributeName="fill"
+            values={`${fillColor[131]};${highlightColor};${fillColor[131]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="454.5108"
           y="583.00537"
@@ -5592,7 +6387,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[132] && (<animate
+            attributeName="fill"
+            values={`${fillColor[132]};${highlightColor};${fillColor[132]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="533.43475"
           y="580.53119"
@@ -5613,7 +6414,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[133] && (<animate
+            attributeName="fill"
+            values={`${fillColor[133]};${highlightColor};${fillColor[133]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="621.56555"
           y="636.24048"
@@ -5634,7 +6441,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[134] && (<animate
+            attributeName="fill"
+            values={`${fillColor[134]};${highlightColor};${fillColor[134]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="686.6908"
           y="607.98688"
@@ -5655,7 +6468,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[135] && (<animate
+            attributeName="fill"
+            values={`${fillColor[135]};${highlightColor};${fillColor[135]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="833.16437"
           y="626.88446"
@@ -5676,7 +6495,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[136] && (<animate
+            attributeName="fill"
+            values={`${fillColor[136]};${highlightColor};${fillColor[136]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="955.74084"
           y="688.43793"
@@ -5697,7 +6522,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[137] && (<animate
+            attributeName="fill"
+            values={`${fillColor[137]};${highlightColor};${fillColor[137]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="188.74309"
           y="690.92969"
@@ -5718,7 +6549,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[138] && (<animate
+            attributeName="fill"
+            values={`${fillColor[138]};${highlightColor};${fillColor[138]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="327.6597"
           y="653.0979"
@@ -5739,7 +6576,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[139] && (<animate
+            attributeName="fill"
+            values={`${fillColor[139]};${highlightColor};${fillColor[139]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="408.88681"
           y="659.82776"
@@ -5760,7 +6603,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[140] && (<animate
+            attributeName="fill"
+            values={`${fillColor[140]};${highlightColor};${fillColor[140]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="531.71906"
           y="645.82593"
@@ -5781,7 +6630,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[141] && (<animate
+            attributeName="fill"
+            values={`${fillColor[141]};${highlightColor};${fillColor[141]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="646.06775"
           y="659.14966"
@@ -5802,7 +6657,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[142] && (<animate
+            attributeName="fill"
+            values={`${fillColor[142]};${highlightColor};${fillColor[142]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="730.24103"
           y="678.49884"
@@ -5823,7 +6684,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[143] && (<animate
+            attributeName="fill"
+            values={`${fillColor[143]};${highlightColor};${fillColor[143]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="805.79492"
           y="664.05566"
@@ -5844,7 +6711,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[144] && (<animate
+            attributeName="fill"
+            values={`${fillColor[144]};${highlightColor};${fillColor[144]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="30.619053"
           y="761.44165"
@@ -5865,7 +6738,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[145] && (<animate
+            attributeName="fill"
+            values={`${fillColor[145]};${highlightColor};${fillColor[145]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="67.220284"
           y="757.14948"
@@ -5886,7 +6765,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[146] && (<animate
+            attributeName="fill"
+            values={`${fillColor[146]};${highlightColor};${fillColor[146]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="115.55231"
           y="751.44995"
@@ -5907,7 +6792,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[147] && (<animate
+            attributeName="fill"
+            values={`${fillColor[147]};${highlightColor};${fillColor[147]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="152.73372"
           y="739.7323"
@@ -5928,7 +6819,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[148] && (<animate
+            attributeName="fill"
+            values={`${fillColor[148]};${highlightColor};${fillColor[148]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="203.61447"
           y="728.10229"
@@ -5949,7 +6846,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[149] && (<animate
+            attributeName="fill"
+            values={`${fillColor[149]};${highlightColor};${fillColor[149]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="245.65511"
           y="720.22382"
@@ -5970,7 +6873,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[150] && (<animate
+            attributeName="fill"
+            values={`${fillColor[150]};${highlightColor};${fillColor[150]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="295.5611"
           y="694.8302"
@@ -5991,7 +6900,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[151] && (<animate
+            attributeName="fill"
+            values={`${fillColor[151]};${highlightColor};${fillColor[151]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="317.36984"
           y="728.93677"
@@ -6012,7 +6927,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[152] && (<animate
+            attributeName="fill"
+            values={`${fillColor[152]};${highlightColor};${fillColor[152]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="351.59189"
           y="695.97302"
@@ -6033,7 +6954,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[153] && (<animate
+            attributeName="fill"
+            values={`${fillColor[153]};${highlightColor};${fillColor[153]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="371.49347"
           y="734.70355"
@@ -6054,7 +6981,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[154] && (<animate
+            attributeName="fill"
+            values={`${fillColor[154]};${highlightColor};${fillColor[154]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="457.74203"
           y="708.06042"
@@ -6075,7 +7008,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[155] && (<animate
+            attributeName="fill"
+            values={`${fillColor[155]};${highlightColor};${fillColor[155]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="486.43552"
           y="758.71906"
@@ -6096,7 +7035,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[156] && (<animate
+            attributeName="fill"
+            values={`${fillColor[156]};${highlightColor};${fillColor[156]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="544.00958"
           y="759.79169"
@@ -6117,7 +7062,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[157] && (<animate
+            attributeName="fill"
+            values={`${fillColor[157]};${highlightColor};${fillColor[157]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="595.82416"
           y="763.83838"
@@ -6138,7 +7089,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[158] && (<animate
+            attributeName="fill"
+            values={`${fillColor[158]};${highlightColor};${fillColor[158]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="673.91797"
           y="719.91833"
@@ -6159,7 +7116,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[159] && (<animate
+            attributeName="fill"
+            values={`${fillColor[159]};${highlightColor};${fillColor[159]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="678.46155"
           y="872.10461"
@@ -6180,7 +7143,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[160] && (<animate
+            attributeName="fill"
+            values={`${fillColor[160]};${highlightColor};${fillColor[160]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="841.59967"
           y="758.49396"
@@ -6201,7 +7170,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[161] && (<animate
+            attributeName="fill"
+            values={`${fillColor[161]};${highlightColor};${fillColor[161]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="909.35254"
           y="747.84167"
@@ -6222,7 +7197,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[162] && (<animate
+            attributeName="fill"
+            values={`${fillColor[162]};${highlightColor};${fillColor[162]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="998.2585"
           y="749.57202"
@@ -6243,7 +7224,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[163] && (<animate
+            attributeName="fill"
+            values={`${fillColor[163]};${highlightColor};${fillColor[163]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="107.99824"
           y="788.94263"
@@ -6264,7 +7251,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[164] && (<animate
+            attributeName="fill"
+            values={`${fillColor[164]};${highlightColor};${fillColor[164]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="159.04266"
           y="786.63507"
@@ -6285,7 +7278,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[165] && (<animate
+            attributeName="fill"
+            values={`${fillColor[165]};${highlightColor};${fillColor[165]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="254.70715"
           y="809.45947"
@@ -6306,7 +7305,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[166] && (<animate
+            attributeName="fill"
+            values={`${fillColor[166]};${highlightColor};${fillColor[166]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="356.57532"
           y="778.31812"
@@ -6327,7 +7332,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[167] && (<animate
+            attributeName="fill"
+            values={`${fillColor[167]};${highlightColor};${fillColor[167]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="434.37247"
           y="799.46484"
@@ -6348,7 +7359,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[168] && (<animate
+            attributeName="fill"
+            values={`${fillColor[168]};${highlightColor};${fillColor[168]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="463.81421"
           y="827.14117"
@@ -6369,7 +7386,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[169] && (<animate
+            attributeName="fill"
+            values={`${fillColor[169]};${highlightColor};${fillColor[169]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="540.88507"
           y="813.38483"
@@ -6390,7 +7413,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[170] && (<animate
+            attributeName="fill"
+            values={`${fillColor[170]};${highlightColor};${fillColor[170]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="586.78821"
           y="822.11096"
@@ -6411,7 +7440,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[171] && (<animate
+            attributeName="fill"
+            values={`${fillColor[171]};${highlightColor};${fillColor[171]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="898.69147"
           y="972.67072"
@@ -6432,7 +7467,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[172] && (<animate
+            attributeName="fill"
+            values={`${fillColor[172]};${highlightColor};${fillColor[172]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="755.10999"
           y="813.76776"
@@ -6453,7 +7494,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[173] && (<animate
+            attributeName="fill"
+            values={`${fillColor[173]};${highlightColor};${fillColor[173]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="862.43805"
           y="858.27234"
@@ -6474,7 +7521,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[174] && (<animate
+            attributeName="fill"
+            values={`${fillColor[174]};${highlightColor};${fillColor[174]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="950.10712"
           y="821.52643"
@@ -6495,7 +7548,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[175] && (<animate
+            attributeName="fill"
+            values={`${fillColor[175]};${highlightColor};${fillColor[175]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="998.7679"
           y="872.93182"
@@ -6516,7 +7575,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[176] && (<animate
+            attributeName="fill"
+            values={`${fillColor[176]};${highlightColor};${fillColor[176]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="7.796075999999999"
           y="858.58215"
@@ -6537,7 +7602,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[177] && (<animate
+            attributeName="fill"
+            values={`${fillColor[177]};${highlightColor};${fillColor[177]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="49.45089"
           y="845.96716"
@@ -6558,7 +7629,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[178] && (<animate
+            attributeName="fill"
+            values={`${fillColor[178]};${highlightColor};${fillColor[178]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="125.41104000000001"
           y="837.16797"
@@ -6579,7 +7656,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[179] && (<animate
+            attributeName="fill"
+            values={`${fillColor[179]};${highlightColor};${fillColor[179]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="215.90062"
           y="848.04382"
@@ -6600,7 +7683,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[180] && (<animate
+            attributeName="fill"
+            values={`${fillColor[180]};${highlightColor};${fillColor[180]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="271.97235"
           y="864.73907"
@@ -6621,7 +7710,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[181] && (<animate
+            attributeName="fill"
+            values={`${fillColor[181]};${highlightColor};${fillColor[181]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="331.18024"
           y="841.90002"
@@ -6642,7 +7737,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[182] && (<animate
+            attributeName="fill"
+            values={`${fillColor[182]};${highlightColor};${fillColor[182]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="358.06012"
           y="854.3075"
@@ -6663,7 +7764,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[183] && (<animate
+            attributeName="fill"
+            values={`${fillColor[183]};${highlightColor};${fillColor[183]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="410.6098"
           y="821.3642"
@@ -6684,7 +7791,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[184] && (<animate
+            attributeName="fill"
+            values={`${fillColor[184]};${highlightColor};${fillColor[184]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="512.92517"
           y="875.38556"
@@ -6705,7 +7818,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[185] && (<animate
+            attributeName="fill"
+            values={`${fillColor[185]};${highlightColor};${fillColor[185]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="569.03784"
           y="932.28149"
@@ -6726,7 +7845,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[186] && (<animate
+            attributeName="fill"
+            values={`${fillColor[186]};${highlightColor};${fillColor[186]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="635.1568"
           y="912.62103"
@@ -6747,7 +7872,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[187] && (<animate
+            attributeName="fill"
+            values={`${fillColor[187]};${highlightColor};${fillColor[187]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="730.19427"
           y="878.14471"
@@ -6768,7 +7899,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[188] && (<animate
+            attributeName="fill"
+            values={`${fillColor[188]};${highlightColor};${fillColor[188]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="825.70679"
           y="882.44421"
@@ -6789,7 +7926,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[189] && (<animate
+            attributeName="fill"
+            values={`${fillColor[189]};${highlightColor};${fillColor[189]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="46.339531"
           y="942.54938"
@@ -6810,7 +7953,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[190] && (<animate
+            attributeName="fill"
+            values={`${fillColor[190]};${highlightColor};${fillColor[190]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="87.589531"
           y="980.46008"
@@ -6831,7 +7980,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[191] && (<animate
+            attributeName="fill"
+            values={`${fillColor[191]};${highlightColor};${fillColor[191]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="152.90471"
           y="912.13287"
@@ -6852,7 +8007,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[192] && (<animate
+            attributeName="fill"
+            values={`${fillColor[192]};${highlightColor};${fillColor[192]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="162.94466"
           y="1001.83618"
@@ -6873,7 +8034,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[193] && (<animate
+            attributeName="fill"
+            values={`${fillColor[193]};${highlightColor};${fillColor[193]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="309.33496"
           y="916.7627"
@@ -6894,7 +8061,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[194] && (<animate
+            attributeName="fill"
+            values={`${fillColor[194]};${highlightColor};${fillColor[194]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="325.20303"
           y="946.86353"
@@ -6915,7 +8088,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[195] && (<animate
+            attributeName="fill"
+            values={`${fillColor[195]};${highlightColor};${fillColor[195]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="369.74857"
           y="942.42517"
@@ -6936,7 +8115,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[196] && (<animate
+            attributeName="fill"
+            values={`${fillColor[196]};${highlightColor};${fillColor[196]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="432.6217"
           y="894.90863"
@@ -6957,7 +8142,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[197] && (<animate
+            attributeName="fill"
+            values={`${fillColor[197]};${highlightColor};${fillColor[197]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="442.03909"
           y="955.07227"
@@ -6978,7 +8169,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[198] && (<animate
+            attributeName="fill"
+            values={`${fillColor[198]};${highlightColor};${fillColor[198]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="679.69348"
           y="1004.3235"
@@ -6999,7 +8196,13 @@ export const Map = ({onClickNode, fillColor, strokeColor}: Props) => {
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
-        />
+        >
+          {candidateTable[199] && (<animate
+            attributeName="fill"
+            values={`${fillColor[199]};${highlightColor};${fillColor[199]}`}
+            dur="1s"
+            repeatCount="indefinite" />)}
+        </circle>
         <text
           x="838.70312"
           y="994.42535"
