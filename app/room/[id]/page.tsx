@@ -300,7 +300,6 @@ export default function Page({ params }: { params: { id: string } }) {
         <Map
           onClickNode={onClickNode}
           fillColor={fillColor}
-          strokeColor={strokeColor}
           candidates={getNextMoves(gameResponse.data?.next || [])}
           highlightColor="#ff00ff"
         />
