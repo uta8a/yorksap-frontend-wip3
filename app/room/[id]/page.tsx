@@ -18,6 +18,7 @@ type RoomResponse = {
 type GameResponse = {
   phase: number;
   turn: string;
+  gameOver: boolean;
   nowPosition: Player[];
   history?: Phase[];
   ticket?: Ticket[];
@@ -238,10 +239,10 @@ export default function Page({ params }: { params: { id: string } }) {
     console.log(nodeId);
   };
   const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData, {
-    refreshInterval: 1000,
+    refreshInterval: 60000,
   });
   const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData, {
-    refreshInterval: 1000,
+    refreshInterval: 60000,
   });
   useEffect(() => {
     const arr = [];
@@ -322,6 +323,9 @@ export default function Page({ params }: { params: { id: string } }) {
       <h1 className="text-3xl text-center">
         Room: {roomResponse.data?.roomName}
       </h1>
+      {gameResponse.data?.gameOver && (
+        <h1 className="text-center text-4xl">ゲーム終了！</h1>
+      )}
       <div className="flex justify-center text-center">
         <Map
           onClickNode={onClickNode}
@@ -444,24 +448,30 @@ export default function Page({ params }: { params: { id: string } }) {
           </thead>
           <tbody>
             {gameResponse.data?.history?.map((value, index) => {
+              console.log("value.player", value.player);
               return (
                 <React.Fragment key={`frag-${index}`}>
+                  {value.player[0]?.selectedTicket === undefined ? (
+                    <></>
+                  ) : (
+                    <tr key={`tbody-tr-2-${index}`}>
+                      <td key={`tbody-td-2-${index}`}></td>
+                      {value.player.map((value, index) => {
+                        return (
+                          <td key={`tbody-2-${index}`}>
+                            {value.selectedTicket === "UNDERGROUND"
+                              ? "UG"
+                              : value.selectedTicket}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  )}
+
                   <tr key={`tbody-tr-1-${index}`}>
                     <td key={`tbody-td-1-${index}`}>{value.phase}</td>
                     {value.player.map((value, index) => {
                       return <td key={`tbody-1-${index}`}>{value.position}</td>;
-                    })}
-                  </tr>
-                  <tr key={`tbody-tr-2-${index}`}>
-                    <td key={`tbody-td-2-${index}`}></td>
-                    {value.player.map((value, index) => {
-                      return (
-                        <td key={`tbody-2-${index}`}>
-                          {value.selectedTicket === "UNDERGROUND"
-                            ? "UG"
-                            : value.selectedTicket}
-                        </td>
-                      );
                     })}
                   </tr>
                 </React.Fragment>
