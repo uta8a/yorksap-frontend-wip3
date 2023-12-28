@@ -56,20 +56,46 @@ export default function Home() {
   };
   if (error) return <main>failed to load</main>;
   if (isLoading) return <main>loading...</main>;
-  // if (login) window.location.href = `/room/${Cookies.get("roomid")}`;
+  if (login) {
+    return (
+      <main>
+        すでにログインしているようです。
+        <p>
+          あなたのルームはこちら:{" "}
+          <Link
+            className="font-medium text-xl text-blue-500 hover:underline"
+            href={`/room/${Cookies.get("roomid")}`}
+          >
+            {`/room/${Cookies.get("roomid")}`}
+          </Link>
+        </p>
+        ログアウトは
+        <button
+          onClick={() => {
+            Cookies.remove("accessToken");
+            Cookies.remove("roomid");
+            window.location.href = "/";
+          }}
+          className="font-medium text-sl text-blue-500 hover:underline"
+        >
+          こちら
+        </button>
+      </main>
+    );
+  }
   return (
     <main className="flex  flex-col justify-between p-24">
       <h1 className="font-bold text-3xl pb-5">わくわくyorksapランド</h1>
       <form onSubmit={userInfoForm.handleSubmit(onUserInfoSubmit)}>
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          Username
+          お名前
         </label>
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           {...userInfoForm.register("username")}
         />
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          Password
+          パスワード
         </label>
         <input
           type="password"
@@ -80,7 +106,7 @@ export default function Home() {
           <span>This field is required</span>
         )}
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          どのルームに登録しますか？
+          どのルームで作りますか？
         </label>
         <ul className="flex flex-col font-bold">
           {data?.roomlist.map((room) => (
@@ -103,13 +129,20 @@ export default function Home() {
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="submit"
-          value="アカウントを作成してログイン"
+          value={`アカウントを作成`}
         />
       </form>
       {/* TODO: ログイン機能を実装する。ログイン時には roomid が必要 */}
-      <div>
+      <div className="flex">
         <Link
-          className="float-right font-medium text-sl text-blue-500 hover:underline"
+          className="font-medium text-sl text-blue-500 hover:underline"
+          href={`/login`}
+        >
+          ログイン
+        </Link>
+        <span className="">&nbsp;/&nbsp;</span>
+        <Link
+          className="font-medium text-sl text-blue-500 hover:underline"
           href={`/new`}
         >
           ルームを作成
