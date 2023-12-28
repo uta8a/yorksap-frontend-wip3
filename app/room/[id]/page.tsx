@@ -339,7 +339,6 @@ export default function Page({ params }: { params: { id: string } }) {
             return (
               <div key={`input-${index}`}>
                 <input
-                  checked={index === 0}
                   type="radio"
                   className="mr-2"
                   value={JSON.stringify([
@@ -357,7 +356,6 @@ export default function Page({ params }: { params: { id: string } }) {
           return (
             <div key={`input-${index}`}>
               <input
-                checked={index === 0}
                 type="radio"
                 className="mr-2"
                 value={JSON.stringify(["SINGLE", value[2], value[1]])}
@@ -374,13 +372,15 @@ export default function Page({ params }: { params: { id: string } }) {
           ),
           dest,
           gameResponse.data?.next || []
-        ).length !== 0 && (
-          <input
-            className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            type="submit"
-            value={`移動する`}
-          />
-        )}
+        ).length !== 0 &&
+          Object.keys(moveForm.watch()).length !== 0 &&
+          moveForm.watch().move !== null && (
+            <input
+              className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              type="submit"
+              value={`移動する`}
+            />
+          )}
       </form>
       <div className="flex justify-center">
         <table>
