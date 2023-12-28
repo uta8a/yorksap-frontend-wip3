@@ -228,8 +228,12 @@ export default function Page({ params }: { params: { id: string } }) {
     setFillColor(arr2);
     console.log(nodeId);
   };
-  const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData);
-  const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData);
+  const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData, {
+    refreshInterval: 1000,
+  });
+  const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData, {
+    refreshInterval: 1000,
+  });
   useEffect(() => {
     const arr = [];
     for (let i = 0; i < 200; i++) {
