@@ -136,6 +136,15 @@ const listNextWay = (
   return arr;
 };
 
+const getIndexFromTurn = (turn: string, nowPosition: Player[]): number => {
+  for (let i = 0; i < nowPosition.length; i++) {
+    if (nowPosition[i].name === turn) {
+      return i;
+    }
+  }
+  return 0;
+};
+
 export default function Page({ params }: { params: { id: string } }) {
   const [strokeColor, setStrokeColor] = useState<any>([]);
   const [fillColor, setFillColor] = useState<any>([]);
@@ -367,7 +376,21 @@ export default function Page({ params }: { params: { id: string } }) {
             <tr>
               <th></th>
               {gameResponse.data?.nowPosition.map((value, index) => {
-                return <th key={`thead-${index}`}>{value.name}</th>;
+                return (
+                  <th
+                    key={`thead-${index}`}
+                    className={
+                      getIndexFromTurn(
+                        gameResponse.data?.turn || "",
+                        gameResponse.data?.nowPosition || []
+                      ) === index
+                        ? `bg-blue-500`
+                        : ""
+                    }
+                  >
+                    {value.name}
+                  </th>
+                );
               })}
             </tr>
             <tr>
