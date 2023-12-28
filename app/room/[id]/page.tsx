@@ -27,6 +27,15 @@ type Phase = {
   player: Player[];
 };
 
+const colorScheme = [
+  "#ff9999",
+  "#ffcc99",
+  "#ccff99",
+  "#ff99ff",
+  "#cc99ff",
+  "#ff99cc",
+];
+
 const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
   const res = await fetch(url, {
     headers: {
@@ -59,22 +68,11 @@ const getGameData: Fetcher<GameResponse, string> = async (url) => {
 export default function Page({ params }: { params: { id: string } }) {
   const [strokeColor, setStrokeColor] = useState<any>([]);
   const [fillColor, setFillColor] = useState<any>([]);
-  useEffect(() => {
-    const arr = [];
-    for (let i = 0; i < 200; i++) {
-      arr.push("black");
-    }
-    const arr2 = [];
-    for (let i = 0; i < 200; i++) {
-      arr2.push("white");
-    }
-    setStrokeColor(arr);
-    setFillColor(arr2);
-  }, []);
+
   const onClickNode = (nodeId: number) => {
     const arr = [];
     for (let i = 0; i < 200; i++) {
-      arr.push("black");
+      arr.push("#C9C9C9");
     }
     arr[nodeId] = "red";
     setStrokeColor(arr);
@@ -82,13 +80,40 @@ export default function Page({ params }: { params: { id: string } }) {
     for (let i = 0; i < 200; i++) {
       arr2.push("white");
     }
+    if (gameResponse.data) {
+      for (let i = 0; i < gameResponse.data!.nowPosition.length; i++) {
+        const pos = gameResponse.data?.nowPosition[i].position;
+        if (pos) {
+          arr2[pos] = colorScheme[i];
+        }
+      }
+    }
     arr2[nodeId] = "red";
     setFillColor(arr2);
     console.log(nodeId);
   };
   const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData);
   const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData);
-
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < 200; i++) {
+      arr.push("#C9C9C9");
+    }
+    const arr2 = [];
+    for (let i = 0; i < 200; i++) {
+      arr2.push("white");
+    }
+    if (gameResponse.data) {
+      for (let i = 0; i < gameResponse.data!.nowPosition.length; i++) {
+        const pos = gameResponse.data?.nowPosition[i].position;
+        if (pos) {
+          arr2[pos] = colorScheme[i];
+        }
+      }
+    }
+    setStrokeColor(arr);
+    setFillColor(arr2);
+  }, [gameResponse.data?.nowPosition]);
   console.log("data", roomResponse, gameResponse);
   if (roomResponse.error || gameResponse.error)
     return (
