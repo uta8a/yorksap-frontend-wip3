@@ -49,7 +49,7 @@ export default function Login() {
           window.location.href = `/room/${data.roomid}`;
         });
       } else {
-        alert("アカウントの作成に失敗しました");
+        alert("ログインに失敗しました");
         console.log(res);
       }
     });
@@ -106,7 +106,7 @@ export default function Login() {
           <span>This field is required</span>
         )}
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          どのルームで作りますか？
+          どのルームにログインしますか？
         </label>
         <ul className="flex flex-col font-bold">
           {data?.roomlist.map((room) => (
@@ -129,7 +129,7 @@ export default function Login() {
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="submit"
-          value={`アカウントを作成`}
+          value={`ログイン`}
         />
       </form>
       {/* TODO: ログイン機能を実装する。ログイン時には roomid が必要 */}
