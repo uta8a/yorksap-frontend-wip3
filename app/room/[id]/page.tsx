@@ -150,6 +150,59 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const onMoveSubmit = (data: MovePost) => {
     console.log("onMoveSubmit", data);
+    const key = Object.keys(data)[0];
+    if ("single" in data) {
+      const single = JSON.parse(data.single);
+      fetch(`/api/v1/game/${params.id}/move`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+        },
+        // JSON: [Ticket(String), Dest(Number)]
+        body: JSON.stringify({
+          ticket: single[0],
+          destination: single[1],
+        }),
+      }).then((res) => {
+        if (res.status === 200) {
+          return res.json().then((jsonValue) => {
+            // console.log(jsonValue);
+            // window.location.reload();
+          });
+        } else {
+          alert("移動に失敗しました");
+          console.log(res);
+        }
+      });
+    }
+    if ("double" in data) {
+      const double = JSON.parse(data.double);
+      fetch(`/api/v1/game/${params.id}/double-move`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+        },
+        // JSON: [[Ticket(String), Dest(Number)], [Ticket(String), Dest(Number)]]
+        body: JSON.stringify({
+          ticket1: double[0][0],
+          destination1: double[0][1],
+          ticket2: double[1][0],
+          destination2: double[1][1],
+        }),
+      }).then((res) => {
+        if (res.status === 200) {
+          return res.json().then((jsonValue) => {
+            // console.log(jsonValue);
+            // window.location.reload();
+          });
+        } else {
+          alert("移動に失敗しました");
+          console.log(res);
+        }
+      });
+    }
   };
   const onClickNode = (nodeId: number) => {
     setDest(nodeId);
@@ -281,13 +334,27 @@ export default function Page({ params }: { params: { id: string } }) {
               <input
                 type="radio"
                 className="mr-2"
-                value={JSON.stringify([value[1], value[2]])}
+                value={JSON.stringify([value[2], value[1]])}
                 {...moveForm.register("single")}
               />
               <span>{`${value[0]} -> (${value[2]}) -> ${value[1]}`}</span>
             </div>
           );
         })}
+        {listNextWay(
+          getNowTurnPosition(
+            gameResponse.data?.turn || "",
+            gameResponse.data?.nowPosition || []
+          ),
+          dest,
+          gameResponse.data?.next || []
+        ).length !== 0 && (
+          <input
+            className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            type="submit"
+            value={`移動する`}
+          />
+        )}
       </form>
       <div className="flex justify-center">
         <table>
