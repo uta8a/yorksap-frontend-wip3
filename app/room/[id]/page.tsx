@@ -5,6 +5,17 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import useSWR, { Fetcher } from "swr";
 import { Map } from "./components/map";
+import { useForm } from "react-hook-form";
+
+type MovePost = SingleMove | DoubleMove;
+
+type SingleMove = {
+  single: string;
+};
+
+type DoubleMove = {
+  double: string;
+};
 
 type RoomResponse = {
   roomName: string;
@@ -135,7 +146,11 @@ export default function Page({ params }: { params: { id: string } }) {
   const [strokeColor, setStrokeColor] = useState<any>([]);
   const [fillColor, setFillColor] = useState<any>([]);
   const [dest, setDest] = useState<number>(0);
+  const moveForm = useForm<MovePost>();
 
+  const onMoveSubmit = (data: MovePost) => {
+    console.log("onMoveSubmit", data);
+  };
   const onClickNode = (nodeId: number) => {
     setDest(nodeId);
     const arr = [];
@@ -228,7 +243,52 @@ export default function Page({ params }: { params: { id: string } }) {
         Turn: {gameResponse.data?.turn} / Phase:{" "}
         {gameResponse.data?.phase || 0 + 1}
       </div>
-      <div className="text-center">Move: {}</div>
+      <form
+        onSubmit={moveForm.handleSubmit(onMoveSubmit)}
+        className="px-10 text-left flex flex-col"
+      >
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Move
+        </label>
+        {listNextWay(
+          getNowTurnPosition(
+            gameResponse.data?.turn || "",
+            gameResponse.data?.nowPosition || []
+          ),
+          dest,
+          gameResponse.data?.next || []
+        ).map((value, index) => {
+          if (value[0] === "DOUBLE") {
+            // double move
+            return (
+              <div key={`input-${index}`}>
+                <input
+                  type="radio"
+                  className="mr-2"
+                  value={JSON.stringify([
+                    [value[1][2], value[1][1]],
+                    [value[2][2], value[2][1]],
+                  ])}
+                  {...moveForm.register("double")}
+                />
+                <span>{`${value[0]}: ${value[1][0]} -> (${value[1][2]}) ->${value[1][1]} -> (${value[2][2]}) -> ${value[2][1]}`}</span>
+              </div>
+            );
+          }
+          // single move
+          return (
+            <div key={`input-${index}`}>
+              <input
+                type="radio"
+                className="mr-2"
+                value={JSON.stringify([value[1], value[2]])}
+                {...moveForm.register("single")}
+              />
+              <span>{`${value[0]} -> (${value[2]}) -> ${value[1]}`}</span>
+            </div>
+          );
+        })}
+      </form>
       <div className="flex justify-center">
         <table>
           <thead>
