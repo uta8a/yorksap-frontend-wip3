@@ -21,7 +21,7 @@ type UserInfoValues = {
   roomid: string;
 };
 
-export default function Home() {
+export default function Login() {
   const userInfoForm = useForm<UserInfoValues>();
   const { data, error, isLoading } = useSWR("/api/v1/room", getData);
   const [login, setLogin] = useState(false);
@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
   const onUserInfoSubmit = (data: UserInfoValues) => {
     console.log(data);
-    fetch(`/api/v1/room/${data.roomid}/register`, {
+    fetch(`/api/v1/room/${data.roomid}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export default function Home() {
           window.location.href = `/room/${data.roomid}`;
         });
       } else {
-        alert("アカウントの作成に失敗しました");
+        alert("ログインに失敗しました");
         console.log(res);
       }
     });
@@ -106,7 +106,7 @@ export default function Home() {
           <span>This field is required</span>
         )}
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          どのルームで作りますか？
+          どのルームにログインしますか？
         </label>
         <ul className="flex flex-col font-bold">
           {data?.roomlist.map((room) => (
@@ -129,16 +129,16 @@ export default function Home() {
         <input
           className="shadow appearance-none border border-blue-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="submit"
-          value={`アカウントを作成`}
+          value={`ログイン`}
         />
       </form>
       {/* TODO: ログイン機能を実装する。ログイン時には roomid が必要 */}
       <div className="flex">
         <Link
           className="font-medium text-sl text-blue-500 hover:underline"
-          href={`/login`}
+          href={`/register`}
         >
-          ログイン
+          アカウントを作成
         </Link>
         <span className="">&nbsp;/&nbsp;</span>
         <Link
