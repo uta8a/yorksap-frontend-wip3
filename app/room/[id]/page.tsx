@@ -147,7 +147,6 @@ const getIndexFromTurn = (turn: string, nowPosition: Player[]): number => {
 };
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [strokeColor, setStrokeColor] = useState<any>([]);
   const [fillColor, setFillColor] = useState<any>([]);
   const [dest, setDest] = useState<number>(0);
   const moveForm = useForm<MovePost>();
@@ -216,12 +215,6 @@ export default function Page({ params }: { params: { id: string } }) {
   };
   const onClickNode = (nodeId: number) => {
     setDest(nodeId);
-    const arr = [];
-    for (let i = 0; i < 200; i++) {
-      arr.push("#C9C9C9");
-    }
-    arr[nodeId] = "red";
-    setStrokeColor(arr);
     const arr2 = [];
     for (let i = 0; i < 200; i++) {
       arr2.push("white");
@@ -245,10 +238,6 @@ export default function Page({ params }: { params: { id: string } }) {
     refreshInterval: 60000,
   });
   useEffect(() => {
-    const arr = [];
-    for (let i = 0; i < 200; i++) {
-      arr.push("#C9C9C9");
-    }
     const arr2 = [];
     for (let i = 0; i < 200; i++) {
       arr2.push("white");
@@ -261,7 +250,6 @@ export default function Page({ params }: { params: { id: string } }) {
         }
       }
     }
-    setStrokeColor(arr);
     setFillColor(arr2);
   }, [gameResponse.data?.nowPosition]);
   console.log("data", roomResponse, gameResponse);
@@ -328,10 +316,13 @@ export default function Page({ params }: { params: { id: string } }) {
       )}
       <div className="flex justify-center text-center">
         <Map
-          onClickNode={onClickNode}
-          fillColor={fillColor}
+          // FIXME: ここにプレイヤーの位置を設定する。（-1 を設定すると非表示になるので、Mr. X が現れていないときはそうする）
+          playerPositions={[8, 9, 20, 18, 19, 31]}
+          playerColors={colorScheme}
           candidates={getNextMoves(gameResponse.data?.next || [])}
           highlightColor="#ff00ff"
+          selectedNode={dest}
+          onClickNode={onClickNode}
         />
       </div>
       <div className="text-center">
