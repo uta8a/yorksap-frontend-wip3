@@ -2,17 +2,24 @@ import React from 'react';
 import waypoints from './waypoints.json';
 
 type Props = {
-  onClickNode: (nodeId: number) => void;
-  fillColor: string[];
+  playerPositions: number[];
+  playerColors: string[];
   candidates: number[];
   highlightColor?: string;
+  selectedNode: number;
+  onClickNode: (nodeId: number) => void;
 };
 
-export const Map = ({onClickNode, fillColor, candidates, highlightColor}: Props) => {
+export const Map = ({playerPositions, playerColors, candidates, highlightColor, selectedNode, onClickNode}: Props) => {
   const candidateTable = new Array(200).fill(false);
   for (const candidate of candidates) {
     candidateTable[candidate] = true;
   }
+
+  const playerPosTable = new Array(200).fill(-1);
+  playerPositions.forEach((pos, player) => {
+    playerPosTable[pos] = player;
+  });
 
   highlightColor = highlightColor || '#ff5c61';
 
@@ -27,6 +34,13 @@ export const Map = ({onClickNode, fillColor, candidates, highlightColor}: Props)
     } else if (wp.bus) {
       strokeStyle = busStroke;
     }
+    let fillColor = 'white';
+    if (selectedNode == wp.id) {
+      fillColor = 'red';
+    } else if (playerPosTable[wp.id] >= 0) {
+      fillColor = playerColors[playerPosTable[wp.id]];
+    }
+
     return (
       <React.Fragment key={`${wp.id}`}>
         <circle
@@ -34,7 +48,7 @@ export const Map = ({onClickNode, fillColor, candidates, highlightColor}: Props)
           cx={wp.x}
           cy={wp.y}
           r="12"
-          fill={fillColor[wp.id]}
+          fill={fillColor}
           stroke={strokeStyle}
           strokeWidth="3"
           onClick={(event) => {
@@ -43,7 +57,7 @@ export const Map = ({onClickNode, fillColor, candidates, highlightColor}: Props)
           }}
         >
           {candidateTable[wp.id] && (
-            <animate attributeName="fill" values={`${fillColor[wp.id]};${highlightColor};${fillColor[wp.id]}`} dur="1s" repeatCount="indefinite" />
+            <animate attributeName="fill" values={`${fillColor};${highlightColor};${fillColor}`} dur="1s" repeatCount="indefinite" />
           )}
         </circle>
         <text x={wp.x - 10} y={wp.y + 3} fontFamily="sans-serif" fontSize="12" style={{pointerEvents: 'none'}}>
