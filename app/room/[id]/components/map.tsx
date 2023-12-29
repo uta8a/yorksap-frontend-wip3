@@ -1,5 +1,6 @@
 import React from 'react';
 import waypoints from './waypoints.json';
+import {PlayerIndicator} from './player-indicator';
 
 type Props = {
   playerPositions: number[];
@@ -7,10 +8,11 @@ type Props = {
   candidates: number[];
   highlightColor?: string;
   selectedNode: number;
+  selectedNodeColor?: string;
   onClickNode: (nodeId: number) => void;
 };
 
-export const Map = ({playerPositions, playerColors, candidates, highlightColor, selectedNode, onClickNode}: Props) => {
+export const Map = ({playerPositions, playerColors, candidates, highlightColor, selectedNode, selectedNodeColor, onClickNode}: Props) => {
   const candidateTable = new Array(200).fill(false);
   for (const candidate of candidates) {
     candidateTable[candidate] = true;
@@ -34,12 +36,13 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
     } else if (wp.bus) {
       strokeStyle = busStroke;
     }
-    let fillColor = 'white';
-    if (selectedNode == wp.id) {
-      fillColor = 'red';
-    } else if (playerPosTable[wp.id] >= 0) {
-      fillColor = playerColors[playerPosTable[wp.id]];
-    }
+    let fillColor = selectedNode == wp.id ? selectedNodeColor || 'red' : 'white';
+
+    const playerIndicator = playerPosTable[wp.id] >= 0 && (
+      <g transform={`translate(${wp.x - 12}, ${wp.y - 32})`}>
+        <PlayerIndicator color={playerColors[playerPosTable[wp.id]]} raw />
+      </g>
+    );
 
     return (
       <React.Fragment key={`${wp.id}`}>
@@ -55,6 +58,7 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
             const target = event.target as HTMLInputElement;
             onClickNode(parseInt(target.id.substring(8)));
           }}
+          style={{cursor: 'pointer'}}
         >
           {candidateTable[wp.id] && (
             <animate attributeName="fill" values={`${fillColor};${highlightColor};${fillColor}`} dur="1s" repeatCount="indefinite" />
@@ -63,6 +67,7 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
         <text x={wp.x - 10} y={wp.y + 3} fontFamily="sans-serif" fontSize="12" style={{pointerEvents: 'none'}}>
           {wp.id}
         </text>
+        {playerIndicator}
       </React.Fragment>
     );
   });
