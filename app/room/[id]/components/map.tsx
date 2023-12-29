@@ -94,6 +94,28 @@ export const Map = ({
     );
   });
 
+  const legend = (
+    <g transform="translate(930,920)">
+      <rect width="90" height="100" rx="5" stroke="black" fill="rgba(255,255,255,0.8)" />
+      <path stroke="gray" strokeWidth="5" d="m10,20 30,0" />
+      <text x="45" y="25" fontFamily="sans-serif" fontSize="15">
+        TAXI
+      </text>
+      <path stroke="cyan" strokeWidth="5" d="m10,40 30,0" />
+      <text x="45" y="45" fontFamily="sans-serif" fontSize="15">
+        BUS
+      </text>
+      <path stroke="red" strokeWidth="5" d="m10,60 30,0" strokeDasharray="8 3" />
+      <text x="45" y="65" fontFamily="sans-serif" fontSize="15">
+        U-G
+      </text>
+      <path stroke="black" strokeWidth="3" d="m10,80 30,0" />
+      <text x="45" y="85" fontFamily="sans-serif" fontSize="15">
+        BOAT
+      </text>
+    </g>
+  );
+
   return (
     <svg
       width="1024"
@@ -2996,6 +3018,7 @@ export const Map = ({
         strokeWidth="5"
       />
       {nodes}
+      {legend}
     </svg>
   );
 };
