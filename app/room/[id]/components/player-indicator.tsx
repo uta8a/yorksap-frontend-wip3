@@ -2,12 +2,25 @@ import React from "react";
 
 type Props = {
   color: string;
+  icon?: string;
   width?: number;
   raw?: boolean;
 };
 
-export const PlayerIndicator = ({ color, width, raw }: Props) => {
-  const content = (
+export const PlayerIndicator = ({color, icon, width, raw}: Props) => {
+  const clipPathId = `player-clipPath-${Math.random()}`;
+  const content = icon ? (
+    <>
+      <defs>
+        <clipPath id={clipPathId}>
+          <circle cx="12" cy="9" r="10" />
+        </clipPath>
+      </defs>
+      <path d="m12,24 -4,-5 8,0z" fill={color} />
+      <circle cx="12" cy="9" r="11" fill={color} strokeWidth="1" />
+      <image href={icon} x="2" y="-1" height="20" width="20" clipPath={`url(#${clipPathId})`} />
+    </>
+  ) : (
     <>
       <circle
         cx="12"
