@@ -1,12 +1,12 @@
 import React from "react";
 
-type Props = {
+type Props = React.HTMLAttributes<SVGElement> & {
   color: string;
   width?: number;
   raw?: boolean;
 };
 
-export const PlayerIndicator = ({ color, width, raw }: Props) => {
+export const PlayerIndicator = ({ color, width, raw, ...svgProps }: Props) => {
   const content = (
     <>
       <circle
@@ -37,6 +37,7 @@ export const PlayerIndicator = ({ color, width, raw }: Props) => {
       viewBox="0 0 24 24"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      {...svgProps}
     >
       {content}
     </svg>

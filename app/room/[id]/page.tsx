@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import useSWR, { Fetcher, useSWRConfig } from "swr";
 import { Map } from "./components/map";
 import { useForm } from "react-hook-form";
+import { PlayerIndicator } from "./components/player-indicator";
 
 type MovePost = {
   move: string;
@@ -147,7 +148,6 @@ const getIndexFromTurn = (turn: string, nowPosition: Player[]): number => {
 };
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [fillColor, setFillColor] = useState<any>([]);
   const [dest, setDest] = useState<number>(0);
   const moveForm = useForm<MovePost>();
   // const { mutate } = useSWRConfig();
@@ -215,21 +215,6 @@ export default function Page({ params }: { params: { id: string } }) {
   };
   const onClickNode = (nodeId: number) => {
     setDest(nodeId);
-    const arr2 = [];
-    for (let i = 0; i < 200; i++) {
-      arr2.push("white");
-    }
-    if (gameResponse.data) {
-      for (let i = 0; i < gameResponse.data!.nowPosition.length; i++) {
-        const pos = gameResponse.data?.nowPosition[i].position;
-        if (pos) {
-          arr2[pos] = colorScheme[i];
-        }
-      }
-    }
-    arr2[nodeId] = "red";
-    setFillColor(arr2);
-    console.log(nodeId);
   };
   const roomResponse = useSWR(`/api/v1/room/${params.id}`, getRoomData, {
     refreshInterval: 60000,
@@ -237,21 +222,6 @@ export default function Page({ params }: { params: { id: string } }) {
   const gameResponse = useSWR(`/api/v1/game/${params.id}`, getGameData, {
     refreshInterval: 60000,
   });
-  useEffect(() => {
-    const arr2 = [];
-    for (let i = 0; i < 200; i++) {
-      arr2.push("white");
-    }
-    if (gameResponse.data) {
-      for (let i = 0; i < gameResponse.data!.nowPosition.length; i++) {
-        const pos = gameResponse.data?.nowPosition[i].position;
-        if (pos) {
-          arr2[pos] = colorScheme[i];
-        }
-      }
-    }
-    setFillColor(arr2);
-  }, [gameResponse.data]);
   console.log("data", roomResponse, gameResponse);
   console.log(
     "listNextWay",
@@ -316,8 +286,7 @@ export default function Page({ params }: { params: { id: string } }) {
       )}
       <div className="flex justify-center text-center">
         <Map
-          // FIXME: ここにプレイヤーの位置を設定する。（-1 を設定すると非表示になるので、Mr. X が現れていないときはそうする）
-          playerPositions={[8, 9, 20, 18, 19, 31]}
+          playerPositions={gameResponse.data?.nowPosition.map(pos => pos.position || -1) || []}
           playerColors={colorScheme}
           candidates={getNextMoves(gameResponse.data?.next || [])}
           highlightColor="#ff00ff"
@@ -421,6 +390,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     }
                   >
                     {value.name}
+                    <PlayerIndicator color={colorScheme[index]} style={{ display: 'inline' }} />
                   </th>
                 );
               })}
