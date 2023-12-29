@@ -59,9 +59,9 @@ const colorScheme = [
 ];
 
 const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
-  const headers = {
+  const headers: HeadersInit = {
     "Content-Type": "application/json",
-  }
+  };
   if (Cookies.get("accessToken") !== undefined)
     headers["Authorization"] = `Bearer ${Cookies.get("accessToken")}`;
   const res = await fetch(url, { headers });
@@ -73,9 +73,9 @@ const getRoomData: Fetcher<RoomResponse, string> = async (url) => {
   return res.json();
 };
 const getGameData: Fetcher<GameResponse, string> = async (url) => {
-  const headers = {
+  const headers: HeadersInit = {
     "Content-Type": "application/json",
-  }
+  };
   if (Cookies.get("accessToken") !== undefined)
     headers["Authorization"] = `Bearer ${Cookies.get("accessToken")}`;
   const res = await fetch(url, { headers });
@@ -251,7 +251,7 @@ export default function Page({ params }: { params: { id: string } }) {
       }
     }
     setFillColor(arr2);
-  }, [gameResponse.data?.nowPosition]);
+  }, [gameResponse.data]);
   console.log("data", roomResponse, gameResponse);
   console.log(
     "listNextWay",
