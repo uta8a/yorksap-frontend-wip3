@@ -64,7 +64,7 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
             <animate attributeName="fill" values={`${fillColor};${highlightColor};${fillColor}`} dur="1s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x={wp.x - 10} y={wp.y + 3} fontFamily="sans-serif" fontSize="12" style={{pointerEvents: 'none'}}>
+        <text x={wp.x} y={wp.y + 4} fontFamily="sans-serif" fontSize="12" style={{pointerEvents: 'none'}} textAnchor="middle">
           {wp.id}
         </text>
         {playerIndicator}
