@@ -46,6 +46,7 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
 
     return (
       <React.Fragment key={`${wp.id}`}>
+        <circle cx={wp.x} cy={wp.y} r="12" stroke="#707070" strokeWidth="4" />
         <circle
           id={`mapnode-${wp.id}`}
           cx={wp.x}
@@ -76,17 +77,17 @@ export const Map = ({playerPositions, playerColors, candidates, highlightColor, 
     <svg width="1024" height="1024" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="__map_node_combo" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#db427f" />
-          <stop offset="50%" stopColor="#db427f" />
-          <stop offset="50%" stopColor="#3b9dff" />
-          <stop offset="100%" stopColor="#3b9dff" />
+          <stop offset="0%" stopColor="red" />
+          <stop offset="50%" stopColor="red" />
+          <stop offset="50%" stopColor="cyan" />
+          <stop offset="100%" stopColor="cyan" />
         </linearGradient>
 
         <linearGradient id="__map_node_bus" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#a1a1a1" />
-          <stop offset="50%" stopColor="#a1a1a1" />
-          <stop offset="50%" stopColor="#3b9dff" />
-          <stop offset="100%" stopColor="#3b9dff" />
+          <stop offset="0%" stopColor="gray" />
+          <stop offset="50%" stopColor="gray" />
+          <stop offset="50%" stopColor="cyan" />
+          <stop offset="100%" stopColor="cyan" />
         </linearGradient>
       </defs>
       <rect width="1024" height="1024" fill="#d3d3d3" />
