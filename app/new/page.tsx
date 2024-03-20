@@ -5,6 +5,8 @@ import useSWR, { Fetcher } from "swr";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 const getData: Fetcher<RoomList, string> = (url) =>
   fetch(url).then((res) => res.json());
 
@@ -21,10 +23,17 @@ type UserInfoValues = {
   roomname: string;
 };
 
-export default function New() {
+function RealNew() {
   const userInfoForm = useForm<UserInfoValues>();
-  const onUserInfoSubmit = (data: UserInfoValues) => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const onUserInfoSubmit = async (data: UserInfoValues) => {
     console.log(data);
+
+    let reCaptchaToken = "";
+    if (executeRecaptcha) {
+      reCaptchaToken = await executeRecaptcha("CreateRoom");
+    }
+
     fetch(`/api/v1/room`, {
       method: "POST",
       headers: {
@@ -34,6 +43,7 @@ export default function New() {
         userName: data.username,
         userPassword: data.password,
         roomName: data.roomname,
+        reCaptchaToken: reCaptchaToken,
       }),
     }).then((res) => {
       if (res.status === 200) {
@@ -93,5 +103,16 @@ export default function New() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function New() {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY!}
+      language="ja"
+    >
+      <RealNew />
+    </GoogleReCaptchaProvider>
   );
 }
