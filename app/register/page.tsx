@@ -5,6 +5,8 @@ import useSWR, { Fetcher } from "swr";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 const getData: Fetcher<RoomList, string> = (url) =>
   fetch(url).then((res) => res.json());
 
@@ -21,7 +23,7 @@ type UserInfoValues = {
   roomid: string;
 };
 
-export default function Home() {
+function RealHome() {
   const userInfoForm = useForm<UserInfoValues>();
   const { data, error, isLoading } = useSWR("/api/v1/room", getData);
   const [login, setLogin] = useState(false);
@@ -30,8 +32,15 @@ export default function Home() {
       setLogin(true);
     }
   }, []);
-  const onUserInfoSubmit = (data: UserInfoValues) => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const onUserInfoSubmit = async (data: UserInfoValues) => {
     console.log(data);
+
+    let reCaptchaToken = "";
+    if (executeRecaptcha) {
+      reCaptchaToken = await executeRecaptcha("CreateAccount");
+    }
+
     fetch(`/api/v1/room/${data.roomid}/register`, {
       method: "POST",
       headers: {
@@ -40,6 +49,7 @@ export default function Home() {
       body: JSON.stringify({
         userName: data.username,
         userPassword: data.password,
+        reCaptchaToken: reCaptchaToken,
       }),
     }).then((res) => {
       if (res.status === 200) {
@@ -149,5 +159,16 @@ export default function Home() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY!}
+      language="ja"
+    >
+      <RealHome />
+    </GoogleReCaptchaProvider>
   );
 }
